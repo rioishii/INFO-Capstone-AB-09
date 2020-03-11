@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import theme from '../themes';
 import logo from '../images/templogo.png';
-import hero from '../images/temphero.png';
+import Dragndrop from '../components/dragndrop';
 import factsIcon from '../images/factsicon.png'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -52,6 +53,23 @@ const useStyles = makeStyles(theme => ({
 
 const LandingPage = () => {
   const classes = useStyles();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [prediction, setPrediction] = useState("");
+  const [probability, setProbability] = useState("");
+
+  const onChangeImageHandler = event => {
+    setSelectedFile(event.target.files[0]);
+  }
+
+  const onClick = () => {
+    const data = new FormData()
+    data.append('image', selectedFile)
+    axios.post("http://localhost:8000/upload", data, { 
+    })
+    .then(res => {
+      console.log(res);
+    });
+  }
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -79,10 +97,8 @@ const LandingPage = () => {
                 <div className={classes.heroButtons}>
                   <Grid container spacing={2}>
                     <Grid item>
-                      <Button variant="contained" color="primary">
-                        <Link to="/scoreDemo" style={{textDecoration: 'none', color: '#fff'}}>
-                          Score My Food
-                        </Link>
+                      <Button variant="contained" color="primary" onClick={onClick}>
+                        Score My Food
                       </Button>
                     </Grid>
                     <Grid item>
@@ -113,7 +129,7 @@ const LandingPage = () => {
             </Grid> 
 
             <Grid item md={6}>
-              <img className={classes.heroImage} src={hero} alt="hero"/>
+              <Dragndrop onChangeImageHandler={onChangeImageHandler} />
             </Grid>  
           </Grid>
           
