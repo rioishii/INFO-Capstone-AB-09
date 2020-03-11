@@ -62,13 +62,23 @@ const LandingPage = () => {
   }
 
   const onClick = () => {
-    const data = new FormData()
-    data.append('image', selectedFile)
-    axios.post("http://localhost:8000/upload", data, { 
-    })
-    .then(res => {
-      console.log(res);
-    });
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    axios.post('http://127.0.0.1:5000/predict', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(res => {
+          if (res.data.success === true) {
+            setPrediction(res.data.prediction)
+            setProbability(res.data.probability)
+            console.log(res.data.prediction)
+            console.log(res.data.probability)
+          }
+        });
+        
   }
 
   return (
@@ -130,6 +140,10 @@ const LandingPage = () => {
 
             <Grid item md={6}>
               <Dragndrop onChangeImageHandler={onChangeImageHandler} />
+              <img src= {URL.createObjectURL(selectedFile)}></img>
+              <Typography className={classes.title} color="secondary" gutterBottom>
+                {probability}  {prediction}
+              </Typography>
             </Grid>  
           </Grid>
           
