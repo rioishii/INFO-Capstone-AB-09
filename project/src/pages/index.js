@@ -134,7 +134,7 @@ const LandingPage = () => {
                   </Grid>
                 </div>
 
-                <Card className={classes.card} variant="outlined">
+                <Card className={classes.card}>
                   <CardContent>
                     <div>
                       <img
