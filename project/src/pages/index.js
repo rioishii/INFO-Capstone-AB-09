@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import axios from "axios"
+import React from "react"
 import theme from "../themes"
 import logo from "../images/logo.png"
 import AppBar from "@material-ui/core/AppBar"
@@ -55,36 +54,6 @@ const useStyles = makeStyles(theme => ({
 
 const LandingPage = () => {
   const classes = useStyles()
-  const [score, setScore] = useState("?");
-  const [selectedFile, setSelectedFile] = useState(null)
-  const [prediction, setPrediction] = useState("")
-  const [probability, setProbability] = useState("")
-
-  const handleOnDrop = file => {
-    setSelectedFile(file)
-  }
-
-  const onClick = () => {
-    console.log(selectedFile)
-    setScore("69");
-    const formData = new FormData()
-    formData.append("image", selectedFile)
-
-    axios
-      .post("http://127.0.0.1:5000/predict", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then(res => {
-        if (res.data.success === true) {
-          setPrediction(res.data.prediction)
-          setProbability(res.data.probability)
-          console.log(res.data.prediction)
-          console.log(res.data.probability)
-        }
-      })
-  }
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -102,7 +71,7 @@ const LandingPage = () => {
         </AppBar>
 
         <main>
-          <Grid container style={{ marginTop: "50px" }}>
+          <Grid container style={{ marginTop: "35px" }} >
             <Grid item md={6}>
               <div className={classes.heroContent}>
                 <Typography variant="h3" color="textPrimary" gutterBottom>
@@ -120,15 +89,14 @@ const LandingPage = () => {
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={onClick}
                         style={{ color: "#fff" }}
                       >
-                        See Your Score Now
+                        Learn More
                       </Button>
                     </Grid>
                     <Grid item>
                       <Button variant="outlined" color="primary">
-                        Learn More
+                        Register My Profile
                       </Button>
                     </Grid>
                   </Grid>
@@ -162,39 +130,9 @@ const LandingPage = () => {
               </div>
             </Grid>
 
-            <Grid item md={6}>
+            <Grid item md={6} >
               <Container>
-                <Dropzone handleOnDrop={handleOnDrop} />
-                <Typography
-                  className={classes.title}
-                  color="secondary"
-                  gutterBottom
-                >
-                </Typography>
-
-                <Card className={classes.scoreCard}>
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      component="h2"
-                      color="primary"
-                    >
-                      Score:
-                    </Typography>
-                    <Typography variant="h4" color="secondary">
-                      {score}/100
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      Probability: 99% 
-                      {/* {probability} */}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      Prediction: 99% this is probably a hamburger
-                      {/* {prediction} */}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <Dropzone />
               </Container>
             </Grid>
           </Grid>
