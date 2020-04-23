@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: theme.spacing(4),
-    maxWidth: "500px",
+    maxWidth: "450px",
     textAlign: "center",
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),
@@ -206,7 +206,7 @@ const Dropzone = () => {
               onClick={onImageSubmit}
               disabled={files.length === 0 ? true : false}
             >
-              See Your Score Now
+               Submit
             </Button>
           </Paper>
         </MuiThemeProvider>
