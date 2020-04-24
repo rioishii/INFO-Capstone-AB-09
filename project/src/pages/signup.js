@@ -11,8 +11,8 @@ import Link from "@material-ui/core/Link"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import Hidden from "@material-ui/core/Hidden"
-import { Auth } from "aws-amplify"
 import Typography from "@material-ui/core/Typography"
+import { Redirect, NavLink } from "react-router-dom"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(4, 0, 4),
+    margin: theme.spacing(4, 0, 2),
     minWidth: 300,
   },
   img: {
@@ -49,13 +49,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function SignInSide() {
+function Signup(props) {
   const classes = useStyles()
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [passwordConf, setpasswordConf] = useState("")
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -141,8 +136,9 @@ export default function SignInSide() {
                   />
                 </Grid>
                 <Hidden smDown>
-                  <Grid item xs={false} md={6} />
+                  <Grid item xs={12} md={6} />
                 </Hidden>
+
                 <Grid item xs={12} md={6}>
                   <TextField
                     variant="outlined"
@@ -159,10 +155,10 @@ export default function SignInSide() {
                     variant="outlined"
                     required
                     fullWidth
-                    name="passwordConf"
+                    name="password"
                     label="Confirm Password"
-                    type="passwordConf"
-                    id="passwordConf"
+                    type="password"
+                    id="password"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -197,3 +193,5 @@ export default function SignInSide() {
     </MuiThemeProvider>
   )
 }
+
+export default Signup
