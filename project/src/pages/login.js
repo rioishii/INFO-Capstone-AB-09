@@ -85,7 +85,6 @@ export default function SignInSide() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                autoFocus
               />
               <TextField
                 variant="outlined"
@@ -119,7 +118,7 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/signup" variant="body2">
                     {"Don't have an account? Join Now"}
                   </Link>
                 </Grid>
@@ -140,6 +139,7 @@ export default function SignInSide() {
               src={loginImg}
               width="500px"
               style={{ marginTop: "75px", marginBottom: "30px" }}
+              alt="icon"
             />
             <div style={{ paddingLeft: "100px", paddingRight: "100px" }}>
               <Typography color="textSecondary">

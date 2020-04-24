@@ -5,14 +5,13 @@ import { useDropzone } from "react-dropzone"
 import theme from "../../themes"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
-import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 
 const useStyles = makeStyles(theme => ({
   paper: {
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: theme.spacing(4),
     maxWidth: "450px",
     textAlign: "center",
     paddingLeft: theme.spacing(6),
@@ -185,7 +184,6 @@ const Dropzone = () => {
   const renderCard = () => {
     if (!submitted) {
       return (
-        <MuiThemeProvider theme={theme}>
           <Paper elevation={3} className={classes.paper}>
             <Typography
               variant="h4"
@@ -209,11 +207,9 @@ const Dropzone = () => {
                Submit
             </Button>
           </Paper>
-        </MuiThemeProvider>
       )
     } else {
       return (
-        <MuiThemeProvider theme={theme}>
           <Paper elevation={3} className={classes.paper}>
             <Typography
               variant="h4"
@@ -237,7 +233,6 @@ const Dropzone = () => {
               Reset
             </Button>
           </Paper>
-        </MuiThemeProvider>
       )
     }
   }

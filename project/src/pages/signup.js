@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import theme from "../themes"
 import logo from "../images/logo.png"
 import graph from "../images/graph.png"
@@ -9,8 +9,9 @@ import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 import Link from "@material-ui/core/Link"
 import Paper from "@material-ui/core/Paper"
-import Box from "@material-ui/core/Box"
 import Grid from "@material-ui/core/Grid"
+import Hidden from "@material-ui/core/Hidden"
+import { Auth } from "aws-amplify"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
@@ -42,30 +43,41 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(4, 0, 4),
     minWidth: 300,
   },
+  img: {
+    width: "75%",
+    height: "auto",
+  },
 }))
 
 export default function SignInSide() {
   const classes = useStyles()
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [passwordConf, setpasswordConf] = useState("")
 
   return (
     <MuiThemeProvider theme={theme}>
       <Grid container component="main" className={classes.root}>
         <CssBaseline />
         <Grid item xs={false} sm={4} className={classes.image}>
-          <Typography
-            variant="h4"
-            color="textSecondary"
-            style={{
-              marginTop: "50px",
-              paddingLeft: "50px",
-              paddingRight: "50px",
-            }}
-          >
-            Discover how your food contributes to your carbon footprint.
-          </Typography>
-          <div style={{ textAlign: "center", marginTop: "125px" }}>
-            <img src={graph} />
-          </div>
+          <Hidden xsDown>
+            <Typography
+              variant="h4"
+              color="textSecondary"
+              style={{
+                marginTop: "50px",
+                paddingLeft: "50px",
+                paddingRight: "50px",
+              }}
+            >
+              Discover how your food contributes to your carbon footprint.
+            </Typography>
+            <div style={{ textAlign: "center", marginTop: "125px" }}>
+              <img src={graph} alt="graph icon" className={classes.img} />
+            </div>
+          </Hidden>
         </Grid>
         <Grid
           item
@@ -85,7 +97,7 @@ export default function SignInSide() {
                 justifyContent: "center",
               }}
             >
-              <img src={logo} alt="logo" style={{marginRight: "10px"}}/>
+              <img src={logo} alt="logo" style={{ marginRight: "10px" }} />
               <Typography
                 variant="h5"
                 color="primary"
@@ -106,7 +118,6 @@ export default function SignInSide() {
                     fullWidth
                     id="firstName"
                     label="First Name"
-                    autoFocus
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -117,7 +128,6 @@ export default function SignInSide() {
                     id="lastName"
                     label="Last Name"
                     name="lastName"
-                    autoComplete="lname"
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -128,9 +138,11 @@ export default function SignInSide() {
                     id="email"
                     label="Email Address"
                     name="email"
-                    autoComplete="email"
                   />
                 </Grid>
+                <Hidden smDown>
+                  <Grid item xs={false} md={6} />
+                </Hidden>
                 <Grid item xs={12} md={6}>
                   <TextField
                     variant="outlined"
@@ -140,7 +152,17 @@ export default function SignInSide() {
                     label="Password"
                     type="password"
                     id="password"
-                    autoComplete="current-password"
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="passwordConf"
+                    label="Confirm Password"
+                    type="passwordConf"
+                    id="passwordConf"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -163,7 +185,7 @@ export default function SignInSide() {
               </Button>
               <Grid container justify="flex-start">
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/login" variant="body2">
                     Already have an account? Sign in
                   </Link>
                 </Grid>
