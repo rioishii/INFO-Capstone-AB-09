@@ -12,7 +12,7 @@ import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import Hidden from "@material-ui/core/Hidden"
 import Typography from "@material-ui/core/Typography"
-import { Redirect, NavLink } from "react-router-dom"
+import { Auth } from "aws-amplify"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -51,6 +51,41 @@ const useStyles = makeStyles(theme => ({
 
 function Signup(props) {
   const classes = useStyles()
+
+  const initialState = {
+    firstname: "",
+    lastname: "",
+    password: "",
+    passconf: "",
+    email: "",
+    error: "",
+  }
+  const [data, setData] = useState(initialState)
+  const handleInputChange = event => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    console.log(data)
+    try {
+      const user = await Auth.signUp({
+        username: data.email,
+        password: data.password,
+        attributes: {
+          "custom:firstname": data.firstname,
+          "custom:lastname": data.lastname
+        },
+      })
+      console.log({ user })
+    } catch (error) {
+      setData({...data, [error]: error})
+      console.log("error signing up:", error)
+    }
+  }
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -102,17 +137,16 @@ function Signup(props) {
               </Typography>
             </div>
 
-            <form className={classes.form} noValidate>
+            <form className={classes.form} noValidate onSubmit={handleSubmit}>
               <Grid container spacing={6}>
                 <Grid item xs={12} md={6}>
                   <TextField
-                    autoComplete="fname"
                     name="firstName"
                     variant="outlined"
                     required
                     fullWidth
-                    id="firstName"
                     label="First Name"
+                    onChange={handleInputChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -120,9 +154,9 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
-                    id="lastName"
                     label="Last Name"
                     name="lastName"
+                    onChange={handleInputChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -130,15 +164,14 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
-                    id="email"
                     label="Email Address"
                     name="email"
+                    onChange={handleInputChange}
                   />
                 </Grid>
                 <Hidden smDown>
                   <Grid item xs={12} md={6} />
                 </Hidden>
-
                 <Grid item xs={12} md={6}>
                   <TextField
                     variant="outlined"
@@ -147,7 +180,7 @@ function Signup(props) {
                     name="password"
                     label="Password"
                     type="password"
-                    id="password"
+                    onChange={handleInputChange}
                   />
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -155,10 +188,10 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
-                    name="password"
+                    name="passconf"
                     label="Confirm Password"
                     type="password"
-                    id="password"
+                    onChange={handleInputChange}
                   />
                 </Grid>
                 <Grid item xs={12}>

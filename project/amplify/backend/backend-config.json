@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"greenergy1275ea00": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
