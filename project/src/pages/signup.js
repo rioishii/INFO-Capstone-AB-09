@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { navigate } from '@reach/router'
 import theme from "../themes"
 import logo from "../images/logo.png"
 import graph from "../images/graph.png"
@@ -13,6 +14,8 @@ import Grid from "@material-ui/core/Grid"
 import Hidden from "@material-ui/core/Hidden"
 import Typography from "@material-ui/core/Typography"
 import { Auth } from "aws-amplify"
+import Validate from "../utility/FormValidation"
+import FormErrors from "../components/FormErrors"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function Signup(props) {
+function Signup() {
   const classes = useStyles()
 
   const initialState = {
@@ -58,9 +61,14 @@ function Signup(props) {
     password: "",
     passconf: "",
     email: "",
-    error: "",
+    errors: {
+      cognito: null,
+      blankfield: false,
+      passwordmatch: false,
+    },
   }
   const [data, setData] = useState(initialState)
+
   const handleInputChange = event => {
     setData({
       ...data,
@@ -68,21 +76,48 @@ function Signup(props) {
     })
   }
 
+  const clearErrorState = () => {
+    setData({
+      ...data,
+      errors: {
+        cognito: null,
+        blankfield: false,
+        passwordmatch: false,
+      },
+    })
+  }
+
   const handleSubmit = async event => {
-    event.preventDefault();
-    console.log(data)
+    event.preventDefault()
+    clearErrorState()
+    const error = Validate(data)
+    if (error) {
+      setData({
+        ...data,
+        errors: { ...data.errors, ...error },
+      })
+    }
+
     try {
       const user = await Auth.signUp({
         username: data.email,
         password: data.password,
         attributes: {
           "custom:firstname": data.firstname,
-          "custom:lastname": data.lastname
+          "custom:lastname": data.lastname,
         },
       })
       console.log({ user })
+      navigate("/dashboard")
     } catch (error) {
-      setData({...data, [error]: error})
+      let err = null
+      !error.message ? (err = { message: error }) : (err = error)
+      setData({
+        errors: {
+          ...data.errors,
+          cognito: err,
+        },
+      })
       console.log("error signing up:", error)
     }
   }
@@ -137,13 +172,16 @@ function Signup(props) {
               </Typography>
             </div>
 
+            <FormErrors formerrors={data.errors} />
+
             <form className={classes.form} noValidate onSubmit={handleSubmit}>
               <Grid container spacing={6}>
                 <Grid item xs={12} md={6}>
                   <TextField
-                    name="firstName"
+                    name="firstname"
                     variant="outlined"
                     required
+                    id="firstname"
                     fullWidth
                     label="First Name"
                     onChange={handleInputChange}
@@ -154,8 +192,9 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    id="lastname"
                     label="Last Name"
-                    name="lastName"
+                    name="lastname"
                     onChange={handleInputChange}
                   />
                 </Grid>
@@ -164,6 +203,7 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    id="email"
                     label="Email Address"
                     name="email"
                     onChange={handleInputChange}
@@ -177,6 +217,7 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    id="password"
                     name="password"
                     label="Password"
                     type="password"
@@ -188,6 +229,7 @@ function Signup(props) {
                     variant="outlined"
                     required
                     fullWidth
+                    id="passconf"
                     name="passconf"
                     label="Confirm Password"
                     type="password"

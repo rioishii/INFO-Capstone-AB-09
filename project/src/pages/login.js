@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+import { navigate } from '@reach/router'
 import theme from "../themes"
 import logo from "../images/logo.png"
 import loginImg from "../images/login.png"
@@ -12,6 +13,9 @@ import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import Hidden from "@material-ui/core/Hidden"
 import Typography from "@material-ui/core/Typography"
+import { Auth } from "aws-amplify"
+import Validate from "../utility/FormValidation"
+import FormErrors from "../components/FormErrors"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -44,6 +48,64 @@ const useStyles = makeStyles(theme => ({
 export default function SignInSide() {
   const classes = useStyles()
 
+  const initialState = {
+    password: "",
+    email: "",
+    errors: {
+      cognito: null,
+      blankfield: false,
+      passwordmatch: false,
+    },
+  }
+
+  const [data, setData] = useState(initialState)
+
+  const handleInputChange = event => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  const clearErrorState = () => {
+    setData({
+      ...data,
+      errors: {
+        cognito: null,
+        blankfield: false,
+        passwordmatch: false,
+      },
+    })
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+    clearErrorState()
+    const error = Validate(data)
+    if (error) {
+      setData({
+        ...data,
+        errors: { ...data.errors, ...error },
+      })
+    }
+
+    try {
+      const user = await Auth.signIn(data.email, data.password)
+      console.log({ user })
+      navigate("/dashboard")
+    } catch (error) {
+      let err = null
+      !error.message ? (err = { message: error }) : (err = error)
+      setData({
+        errors: {
+          ...data.errors,
+          cognito: err,
+        },
+      })
+      console.log("error signing up:", error)
+    }
+  }
+
   return (
     <MuiThemeProvider theme={theme}>
       <Grid container component="main" className={classes.root}>
@@ -75,7 +137,8 @@ export default function SignInSide() {
                 <strong>Greenergy</strong>
               </Typography>
             </div>
-            <form className={classes.form} noValidate>
+            <FormErrors formerrors={data.errors} />
+            <form className={classes.form} noValidate onSubmit={handleSubmit}>
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -84,7 +147,7 @@ export default function SignInSide() {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
+                onChange={handleInputChange}
               />
               <TextField
                 variant="outlined"
@@ -95,7 +158,7 @@ export default function SignInSide() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                onChange={handleInputChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -132,7 +195,6 @@ export default function SignInSide() {
           xs={false}
           md={7}
           className={classes.image}
-          alignItems="center"
         >
           <Hidden smDown>
             <img
