@@ -1,21 +1,19 @@
 import React, { useState } from "react"
-import { navigate } from '@reach/router'
+import { navigate } from "@reach/router"
 import theme from "../themes"
-import logo from "../images/logo.png"
+import Logo from "./Logo"
 import graph from "../images/graph.png"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import TextField from "@material-ui/core/TextField"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import Checkbox from "@material-ui/core/Checkbox"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import Hidden from "@material-ui/core/Hidden"
 import Typography from "@material-ui/core/Typography"
 import { Auth } from "aws-amplify"
 import Validate from "../utility/FormValidation"
-import FormErrors from "../components/FormErrors"
+import FormErrors from "./FormErrors"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -24,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   image: {},
   mainGrid: {
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(6),
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),
   },
@@ -43,12 +41,20 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(4, 0, 2),
+    margin: theme.spacing(4, 0, 3),
     minWidth: 300,
   },
   img: {
     width: "75%",
     height: "auto",
+  },
+  link: {
+    color: "#6CAE75",
+    textDecoration: "none",
+    "&:hover, &:focus": {
+      textDecoration: "underline",
+      textDecorationColor: "#8ED73D",
+    },
   },
 }))
 
@@ -61,6 +67,7 @@ function Signup() {
     password: "",
     passconf: "",
     email: "",
+    checked: false,
     errors: {
       cognito: null,
       blankfield: false,
@@ -108,7 +115,7 @@ function Signup() {
         },
       })
       console.log({ user })
-      navigate("/dashboard")
+      navigate("/app/dashboard")
     } catch (error) {
       let err = null
       !error.message ? (err = { message: error }) : (err = error)
@@ -154,24 +161,9 @@ function Signup() {
           className={classes.mainGrid}
         >
           <div className={classes.paper}>
-            <div
-              style={{
-                marginBottom: "25px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img src={logo} alt="logo" style={{ marginRight: "10px" }} />
-              <Typography
-                variant="h5"
-                color="primary"
-                className={classes.toolbarTitle}
-              >
-                <strong>Sign Up To Greenergy</strong>
-              </Typography>
+            <div style={{ marginBottom: "35px" }}>
+              <Logo text="Sign Up To Greenergy" />
             </div>
-
             <FormErrors formerrors={data.errors} />
 
             <form className={classes.form} noValidate onSubmit={handleSubmit}>
@@ -236,14 +228,6 @@ function Signup() {
                     onChange={handleInputChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
-                    }
-                    label="Creating this means that you are okay with us using your data to Creating this means that you are okay with us using your data to Creating this means that you are okay with us using your data to Creating this means that you are okay with us using your data to"
-                  />
-                </Grid>
               </Grid>
               <Button
                 type="submit"
@@ -256,7 +240,7 @@ function Signup() {
               </Button>
               <Grid container justify="flex-start">
                 <Grid item>
-                  <Link href="/login" variant="body2">
+                  <Link to="/app/login" className={classes.link}>
                     Already have an account? Sign in
                   </Link>
                 </Grid>

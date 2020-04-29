@@ -1,9 +1,8 @@
 import React from "react"
-import logo from "../../images/logo.png"
+import Logo from '../Logo'
 import AppBar from "@material-ui/core/AppBar"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
 import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -18,6 +17,12 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1.5),
   },
   link: {
+    color: "#49535B",
+    textDecoration: "none",
+    "&:hover, &:focus": {
+      textDecoration: "underline",
+      textDecorationColor: "#8ED73D"
+    },
     marginLeft: theme.spacing(8),
     fontSize: "1.4rem",
   },
@@ -29,32 +34,22 @@ const Navbar = () => {
   return (
     <AppBar position="static" className={classes.appbar}>
       <Toolbar>
-        <div className={classes.logo}>
-          <img src={logo} alt="logo" />
-        </div>
-        <Typography
-          variant="h5"
-          color="primary"
-          className={classes.toolbarTitle}
-        >
-          <strong>Greenergy</strong>
-        </Typography>
+        <Logo text="Greenergy" />
         <nav>
-          <Link color="textPrimary" href="#" className={classes.link}>
+          <Link to="#" className={classes.link}>
             Home
           </Link>
-          <Link color="textPrimary" href="#" className={classes.link}>
+          <Link to="#" className={classes.link}>
             Features
           </Link>
-          <Link color="textPrimary" href="#" className={classes.link}>
+          <Link to="#" className={classes.link}>
             Why Us?
           </Link>
-          <Link color="textPrimary" href="#" className={classes.link}>
+          <Link to="#" className={classes.link}>
             About Us
           </Link>
-          <Link href="/login" color="textPrimary" className={classes.link}>
-            Log In
-          </Link>
+          <Link to="/app/login" className={classes.link} >Log In</Link>
+          <Link to="/app/signup" className={classes.link} >Sign Up</Link>
         </nav>
       </Toolbar>
     </AppBar>

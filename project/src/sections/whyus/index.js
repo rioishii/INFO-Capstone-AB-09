@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   whyusBodyText: {
     fontWeight: "100",
-    fontSize: "24px",
+    fontSize: "22px",
   },
 }))
 

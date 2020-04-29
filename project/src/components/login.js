@@ -1,21 +1,20 @@
 import React, { useState } from "react"
-import { navigate } from '@reach/router'
+import { navigate } from "@reach/router"
 import theme from "../themes"
-import logo from "../images/logo.png"
+import Logo from "./Logo"
 import loginImg from "../images/login.png"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import TextField from "@material-ui/core/TextField"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import Checkbox from "@material-ui/core/Checkbox"
-import Link from "@material-ui/core/Link"
+import { Link } from "gatsby"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import Hidden from "@material-ui/core/Hidden"
 import Typography from "@material-ui/core/Typography"
 import { Auth } from "aws-amplify"
 import Validate from "../utility/FormValidation"
-import FormErrors from "../components/FormErrors"
+import FormErrors from "./FormErrors"
+import { setUser, isLoggedIn } from "../utility/Auth"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -41,11 +40,19 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 3),
+  },
+  link: {
+    color: "#6CAE75",
+    textDecoration: "none",
+    "&:hover, &:focus": {
+      textDecoration: "underline",
+      textDecorationColor: "#8ED73D",
+    },
   },
 }))
 
-export default function SignInSide() {
+function Login() {
   const classes = useStyles()
 
   const initialState = {
@@ -90,9 +97,14 @@ export default function SignInSide() {
     }
 
     try {
-      const user = await Auth.signIn(data.email, data.password)
-      console.log({ user })
-      navigate("/dashboard")
+      await Auth.signIn(data.email, data.password)
+      const user = await Auth.currentAuthenticatedUser()
+      const userInfo = {
+        ...user.attributes,
+        email: user.username,
+      }
+      setUser(userInfo)
+      navigate("/app/dashboard")
     } catch (error) {
       let err = null
       !error.message ? (err = { message: error }) : (err = error)
@@ -120,22 +132,8 @@ export default function SignInSide() {
           className={classes.mainGrid}
         >
           <div className={classes.paper}>
-            <div
-              style={{
-                marginBottom: "25px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img src={logo} alt="logo" style={{ marginRight: "10px" }} />
-              <Typography
-                variant="h5"
-                color="primary"
-                className={classes.toolbarTitle}
-              >
-                <strong>Greenergy</strong>
-              </Typography>
+            <div style={{ marginBottom: "25px" }}>
+              <Logo text="Greenergy" />
             </div>
             <FormErrors formerrors={data.errors} />
             <form className={classes.form} noValidate onSubmit={handleSubmit}>
@@ -160,10 +158,6 @@ export default function SignInSide() {
                 id="password"
                 onChange={handleInputChange}
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
               <Button
                 type="submit"
                 fullWidth
@@ -176,13 +170,13 @@ export default function SignInSide() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link to="#" className={classes.link}>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Join Now"}
+                  <Link to="/app/signup" className={classes.link}>
+                    Don't have an account? Join Now
                   </Link>
                 </Grid>
               </Grid>
@@ -190,12 +184,7 @@ export default function SignInSide() {
           </div>
         </Grid>
 
-        <Grid
-          item
-          xs={false}
-          md={7}
-          className={classes.image}
-        >
+        <Grid item xs={false} md={7} className={classes.image}>
           <Hidden smDown>
             <img
               src={loginImg}
@@ -219,3 +208,5 @@ export default function SignInSide() {
     </MuiThemeProvider>
   )
 }
+
+export default Login

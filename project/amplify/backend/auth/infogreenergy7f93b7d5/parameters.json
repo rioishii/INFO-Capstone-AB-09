@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "greenergy1275ea00_identitypool_1275ea00",
+    "identityPoolName": "infogreenergy7f93b7d5_identitypool_7f93b7d5",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "greene1275ea00",
-    "userPoolName": "greenergy1275ea00_userpool_1275ea00",
+    "resourceNameTruncated": "infogr7f93b7d5",
+    "userPoolName": "infogreenergy7f93b7d5_userpool_7f93b7d5",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "greene1275ea00_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "infogr7f93b7d5_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "greenergy1275ea00",
+    "resourceName": "infogreenergy7f93b7d5",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -48,6 +48,11 @@
     "usernameAttributes": [
         "email"
     ],
+    "triggers": "{}",
     "userPoolGroupList": [],
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
     "dependsOn": []
 }
