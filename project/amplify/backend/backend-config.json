@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"infogreenergy7f93b7d5": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
