@@ -10,11 +10,6 @@
             "StackName": "amplify-infogreenergy-dev-121333",
             "StackId": "arn:aws:cloudformation:us-east-2:395241561214:stack/amplify-infogreenergy-dev-121333/888eb470-8a4d-11ea-be8b-06d398e7edd6",
             "AmplifyAppId": "dfqizm21p2lo7"
-        },
-        "categories": {
-            "auth": {
-                "infogreenergy7f93b7d5": {}
-            }
         }
     }
 }

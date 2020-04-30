@@ -168,18 +168,9 @@ function Login() {
               >
                 Sign In
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link to="#" className={classes.link}>
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/app/signup" className={classes.link}>
-                    Don't have an account? Join Now
-                  </Link>
-                </Grid>
-              </Grid>
+              <Link to="/app/signup" className={classes.link}>
+                Don't have an account? Join Now
+              </Link>
             </form>
           </div>
         </Grid>

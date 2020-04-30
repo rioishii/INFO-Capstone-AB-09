@@ -98,7 +98,6 @@ const Hero = () => {
                     Sign in here
                   </Link>
                 </Typography>
-                {/* <Button size="small">Read More</Button> */}
               </CardActions>
             </Card>
           </div>

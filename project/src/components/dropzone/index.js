@@ -3,6 +3,7 @@ import uploadIcon from "../../images/upload.png"
 import axios from "axios"
 import { useDropzone } from "react-dropzone"
 import theme from "../../themes"
+import Container from "@material-ui/core/Container"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
@@ -16,8 +17,8 @@ const useStyles = makeStyles(theme => ({
     textAlign: "center",
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
   },
   dropzone: {
     height: "300px",
@@ -27,6 +28,10 @@ const useStyles = makeStyles(theme => ({
   uploadIcon: {
     width: "65px",
   },
+  button: {
+    color: "#fff",
+    width: "100%"
+  }
 }))
 
 const baseStyle = {
@@ -59,7 +64,6 @@ const rejectStyle = {
 const thumbsContainer = {
   height: "300px",
   marginTop: theme.spacing(4),
-  paddingTop: theme.spacing(2),
   marginBottom: theme.spacing(4),
 }
 
@@ -67,8 +71,8 @@ const thumb = {
   display: "inline-flex",
   borderRadius: 2,
   border: "1px solid #eaeaea",
-  width: 250,
-  height: 250,
+  width: 280,
+  height: 280,
   padding: 4,
   boxSizing: "border-box",
 }
@@ -89,7 +93,6 @@ const Dropzone = () => {
   const classes = useStyles()
   const [files, setFiles] = useState([])
   const [score, setScore] = useState("")
-  const [submitted, setSubmitted] = useState(false)
   const [prediction, setPrediction] = useState("")
   const [probability, setProbability] = useState("")
   const {
@@ -112,17 +115,14 @@ const Dropzone = () => {
   })
 
   const reset = () => {
-    setFiles([]);
-    setScore("");
-    setSubmitted(false);
-    setPrediction("");
-    setProbability("");
+    setFiles([])
+    setScore("")
+    setPrediction("")
+    setProbability("")
   }
 
   const onImageSubmit = () => {
-    console.log(files)
     setScore("69")
-    setSubmitted(true)
     const formData = new FormData()
     formData.append("image", files)
 
@@ -134,11 +134,8 @@ const Dropzone = () => {
       })
       .then(res => {
         if (res.data.success === true) {
-         
           setPrediction(res.data.prediction)
           setProbability(res.data.probability)
-          console.log(res.data.prediction)
-          console.log(res.data.probability)
         }
       })
   }
@@ -150,7 +147,7 @@ const Dropzone = () => {
       ...(isDragAccept ? acceptStyle : {}),
       ...(isDragReject ? rejectStyle : {}),
     }),
-    [isDragActive, isDragReject]
+    [isDragActive, isDragReject, isDragAccept]
   )
 
   const thumbs = files.map(file => (
@@ -182,64 +179,58 @@ const Dropzone = () => {
   }
 
   const renderCard = () => {
-    if (!submitted) {
+    if (!score) {
       return (
-          <Paper elevation={3} className={classes.paper}>
-            <Typography
-              variant="h4"
-              color="primary"
-              align="center"
-              gutterBottom
-            >
-              <strong>Drap and Drop!</strong>
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              Submit your photo here to calculate how much your food emits!
-            </Typography>
-            {renderImage()}
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ color: "#fff", width: "200px" }}
-              onClick={onImageSubmit}
-              disabled={files.length === 0 ? true : false}
-            >
-               Submit
-            </Button>
-          </Paper>
+        <Container>
+          <Typography variant="h4" color="primary" align="center" gutterBottom>
+            <strong>Drap and Drop!</strong>
+          </Typography>
+          <Typography variant="body2">
+            Submit your photo here to calculate how much your food emits!
+          </Typography>
+          {renderImage()}
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={onImageSubmit}
+            disabled={files.length === 0 ? true : false}
+          >
+            Submit
+          </Button>
+        </Container>
       )
     } else {
       return (
-          <Paper elevation={3} className={classes.paper}>
-            <Typography
-              variant="h4"
-              color="primary"
-              align="center"
-              gutterBottom
-            >
-              <strong>Score: {score}</strong>
-            </Typography>
-            <Typography variant="body2" color="primary">
-              {/* {probability} {prediction} */}
-              99% steak
-            </Typography>
-            {renderImage()}
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ color: "#fff", width: "200px" }}
-              onClick={reset}
-            >
-              Reset
-            </Button>
-          </Paper>
+        <Container>
+          <Typography variant="h4" color="primary" align="center" gutterBottom>
+            <strong>Score: {score}</strong>
+          </Typography>
+          <Typography variant="body1" color="primary">
+            {/* {probability} {prediction} */}
+            <strong>99% steak</strong>
+          </Typography>
+          {renderImage()}
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={reset}
+          >
+            Reset
+          </Button>
+        </Container>
       )
     }
   }
 
   return (
-    renderCard()
+  <Paper elevation={3} className={classes.paper}>
+    {renderCard()}
+  </Paper>
   )
 }
 
 export default Dropzone
+
+
