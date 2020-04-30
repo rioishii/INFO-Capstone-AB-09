@@ -34,78 +34,88 @@ const Features = () => {
   const classes = useStyles()
 
   return (
-    <Container className={classes.features} maxWidth="lg">
-      <Typography variant="h4" align="center" color="secondary" style={{marginBottom: "50px"}}>
-        <strong>Features</strong>
-      </Typography>
-      <Grid container spacing={4}>
-        <Grid item md={4}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.cardMedia}
-              image={feature1}
-              title="Image title"
-            />
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h6" color="primary">
-                <strong>
-                  Calculate how much carbon is emitted from your food
-                </strong>
-              </Typography>
-              <Typography>
-                ed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia consequu
-              </Typography>
-            </CardContent>
-          </Card>
+    <section id="features">
+      <Container className={classes.features} maxWidth="lg">
+        <Typography
+          variant="h4"
+          align="center"
+          color="secondary"
+          style={{ marginBottom: "50px" }}
+        >
+          <strong>Features</strong>
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={feature1}
+                title="Image title"
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h6" color="primary">
+                  <strong>
+                    Calculate how much carbon is emitted from your food
+                  </strong>
+                </Typography>
+                <Typography>
+                  ed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequu
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={feature2}
+                title="Image title"
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h6" color="primary">
+                  <strong>Compare your carbon footprint to other peers</strong>
+                </Typography>
+                <Typography>
+                  ed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequu
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={feature3}
+                title="Image title"
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h6" color="primary">
+                  <strong>Provide solutions to the things you eat</strong>
+                </Typography>
+                <Typography>
+                  ed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequu
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
-        <Grid item md={4}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.cardMedia}
-              image={feature2}
-              title="Image title"
-            />
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h6" color="primary">
-                <strong>Compare your carbon footprint to other peers</strong>
-              </Typography>
-              <Typography>
-                ed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia consequu
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item md={4}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.cardMedia}
-              image={feature3}
-              title="Image title"
-            />
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h6" color="primary">
-                <strong>Provide solutions to the things you eat</strong>
-              </Typography>
-              <Typography>
-                ed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia consequu
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </section>
   )
 }
 

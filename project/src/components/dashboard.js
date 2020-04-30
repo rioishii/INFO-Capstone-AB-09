@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react"
+import theme from "../themes"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import UserNavbar from "./UserNavbar"
+import { Auth } from "aws-amplify"
+import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 export default function Welcome() {
   return (
-    <section className="section auth">
-      <div className="container">
-        <h1>Welcome!</h1>
-        <p>You have successfully registered a new account.</p>
-        <p>We've sent you a email. Please click on the confirmation link to verify your account.</p>
-      </div>
-    </section>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <UserNavbar />
+    </MuiThemeProvider>
   )
 }
