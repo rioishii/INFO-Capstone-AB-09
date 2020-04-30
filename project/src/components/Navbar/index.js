@@ -1,14 +1,22 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
+import { Link as SLink } from "react-scroll"
 import Logo from "../Logo"
 import Toolbar from "@material-ui/core/Toolbar"
 import Button from "@material-ui/core/Button"
 import Container from "@material-ui/core/Container"
+import AppBar from "@material-ui/core/AppBar"
 import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
+  appbar: {
+    background: "#fafafa",
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    boxShadow: "none",
+  },
   toolbar: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   toolbarLinks: {
     flex: 1,
@@ -41,25 +49,52 @@ export default function Navbar() {
   const classes = useStyles()
 
   return (
-    <Container>
-      <React.Fragment>
+    <AppBar position="sticky" className={classes.appbar}>
+      <Container>
         <Toolbar className={classes.toolbar}>
           <Logo text="Greenergy" />
           <div className={classes.toolbarLinks}>
-            <Link to="#" className={classes.link}>
+            <SLink
+              className={classes.link}
+              to="hero"
+              spy={true}
+              smooth={true}
+              offset={-200}
+              duration={500}
+            >
               Home
-            </Link>
-            <Link to="#" className={classes.link}>
+            </SLink>
+            <SLink
+              className={classes.link}
+              to="features"
+              spy={true}
+              smooth={true}
+              offset={-125}
+              duration={500}
+            >
               Features
-            </Link>
-            <Link to="#" className={classes.link}>
+            </SLink>
+            <SLink
+              className={classes.link}
+              to="whyus"
+              spy={true}
+              smooth={true}
+              offset={-125}
+              duration={500}
+            >
               Why Us?
-            </Link>
-            <Link to="#" className={classes.link}>
+            </SLink>
+            <SLink
+              className={classes.link}
+              to="aboutus"
+              spy={true}
+              smooth={true}
+              offset={-125}
+              duration={500}
+            >
               About Us
-            </Link>
+            </SLink>
           </div>
-
           <Button
             size="large"
             variant="outlined"
@@ -75,7 +110,7 @@ export default function Navbar() {
             </Link>
           </Button>
         </Toolbar>
-      </React.Fragment>
-    </Container>
+      </Container>
+    </AppBar>
   )
 }

@@ -14,12 +14,12 @@ const getUser = () => {
 
 export const isLoggedIn = () => {
   if (!isBrowser) {
-      return false
+    return false
   }
 
   const user = getUser()
   if (user) {
-      return user.email != null
+    return !!user.email
   }
 }
 

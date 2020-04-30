@@ -106,15 +106,14 @@ function Signup() {
     }
 
     try {
-      const user = await Auth.signUp({
+      await Auth.signUp({
         username: data.email,
         password: data.password,
         attributes: {
-          "custom:firstname": data.firstname,
-          "custom:lastname": data.lastname,
+          name: data.firstname,
+          family_name: data.lastname,
         },
       })
-      console.log({ user })
       navigate("/app/dashboard")
     } catch (error) {
       let err = null

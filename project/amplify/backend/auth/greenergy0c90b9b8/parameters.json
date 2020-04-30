@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "infogreenergy7f93b7d5_identitypool_7f93b7d5",
+    "identityPoolName": "greenergy0c90b9b8_identitypool_0c90b9b8",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "infogr7f93b7d5",
-    "userPoolName": "infogreenergy7f93b7d5_userpool_7f93b7d5",
+    "resourceNameTruncated": "greene0c90b9b8",
+    "userPoolName": "greenergy0c90b9b8_userpool_0c90b9b8",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -18,7 +18,9 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+        "email",
+        "family_name",
+        "name"
     ],
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
@@ -28,9 +30,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "infogr7f93b7d5_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "greene0c90b9b8_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "infogreenergy7f93b7d5",
+    "resourceName": "greenergy0c90b9b8",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

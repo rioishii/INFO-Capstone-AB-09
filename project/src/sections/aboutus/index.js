@@ -31,7 +31,7 @@ const Aboutus = () => {
   const classes = useStyles()
 
   return (
-    <section>
+    <section id="aboutus">
       <Typography
         variant="h4"
         align="center"
