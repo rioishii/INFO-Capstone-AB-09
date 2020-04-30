@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography"
 import { Auth } from "aws-amplify"
 import Validate from "../utility/FormValidation"
 import FormErrors from "./FormErrors"
-import { setUser, isLoggedIn } from "../utility/Auth"
+import { setUser } from "../utility/Auth"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({

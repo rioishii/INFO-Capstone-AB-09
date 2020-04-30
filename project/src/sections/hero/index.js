@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import CardActions from "@material-ui/core/CardActions"
 import { makeStyles } from "@material-ui/core/styles"
+import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   hero: {
@@ -26,6 +27,13 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "380px",
     padding: theme.spacing(3),
   },
+  buttonLink: {
+    color: "#fff",
+    textDecoration: "none",
+  },
+  signin: {
+    color: "#49535B"
+  }
 }))
 
 const Hero = () => {
@@ -48,12 +56,10 @@ const Hero = () => {
             <div className={classes.heroButtons}>
               <Grid container spacing={2}>
                 <Grid item>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ color: "#fff" }}
-                  >
-                    See Your Score Now
+                  <Button variant="contained" color="primary">
+                    <Link to="/app/signup" className={classes.buttonLink}>
+                      See Your Score Now
+                    </Link>
                   </Button>
                 </Grid>
                 <Grid item>
@@ -86,13 +92,19 @@ const Hero = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Read More</Button>
+                <Typography variant="body1" color="textSecondary">
+                  Already have an account? <br></br>
+                  <Link to="/app/login" className={classes.signin}>
+                    Sign in here
+                  </Link>
+                </Typography>
+                {/* <Button size="small">Read More</Button> */}
               </CardActions>
             </Card>
           </div>
         </Grid>
 
-        <Grid item md={6} style={{textAlign: "center"}}>
+        <Grid item md={6} style={{ textAlign: "center" }}>
           <Dropzone />
         </Grid>
       </Grid>
