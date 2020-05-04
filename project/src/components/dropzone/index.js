@@ -11,8 +11,6 @@ import Paper from "@material-ui/core/Paper"
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginLeft: "auto",
-    marginRight: "auto",
     maxWidth: "450px",
     textAlign: "center",
     paddingLeft: theme.spacing(6),
@@ -42,7 +40,7 @@ const baseStyle = {
   padding: "100px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: "#49535B",
+  borderColor: "#eeeeee",
   borderStyle: "dashed",
   color: "#49535B",
   outline: "none",
@@ -182,10 +180,10 @@ const Dropzone = () => {
     if (!score) {
       return (
         <Container>
-          <Typography variant="h4" color="primary" align="center" gutterBottom>
+          <Typography variant="h2" color="primary" align="center" gutterBottom>
             <strong>Drap and Drop!</strong>
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body1" color="textPrimary" gutterBottom>
             Submit your photo here to calculate how much your food emits!
           </Typography>
           {renderImage()}

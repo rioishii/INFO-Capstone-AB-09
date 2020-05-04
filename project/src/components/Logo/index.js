@@ -12,7 +12,7 @@ function Logo(props) {
       }}
     >
       <img src={logo} alt="logo" style={{ marginRight: "15px" }} />
-      <Typography variant="h5" color="primary">
+      <Typography variant="h3" color="primary">
         <strong>{props.text}</strong>
       </Typography>
     </div>

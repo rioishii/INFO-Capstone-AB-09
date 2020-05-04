@@ -23,6 +23,8 @@ const useStyles = makeStyles(theme => ({
   whyusBodyText: {
     fontWeight: "100",
     fontSize: "22px",
+    letterSpacing: "1px",
+    lineHeight: "30px"
   },
 }))
 
@@ -32,7 +34,7 @@ const Whyus = () => {
     <section id="whyus">
       <Container className={classes.whyus}>
         <Typography
-          variant="h4"
+          variant="h1"
           align="center"
           color="secondary"
           style={{ marginBottom: "35px" }}
@@ -42,12 +44,12 @@ const Whyus = () => {
         <div className={classes.whyusBox}>
           <img className={classes.whyusImg} src={whyus1} alt="whyusicon1" />
           <div className={classes.whyusText}>
-            <Typography variant="h5" color="textPrimary" gutterBottom>
+            <Typography variant="h3" color="textPrimary" gutterBottom>
               <strong>You Can Make a Difference</strong>
             </Typography>
             <Typography
               variant="body1"
-              color="textSecondary"
+              color="textPrimary"
               className={classes.whyusBodyText}
             >
               Food is one of the largest contributors to climate change. You can
@@ -60,12 +62,12 @@ const Whyus = () => {
         <div className={classes.whyusBox}>
           <img className={classes.whyusImg} src={whyus2} alt="whyusicon2" />
           <div className={classes.whyusText}>
-            <Typography variant="h5" color="textPrimary" gutterBottom>
+            <Typography variant="h3" color="textPrimary" gutterBottom>
               <strong>Machine Learning</strong>
             </Typography>
             <Typography
               variant="body1"
-              color="textSecondary"
+              color="textPrimary"
               className={classes.whyusBodyText}
             >
               Emission Impossible is the newest application platform for

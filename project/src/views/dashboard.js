@@ -1,7 +1,7 @@
 import React from "react"
 import theme from "../themes"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import UserNavbar from "./UserNavbar"
+import UserNavbar from "../components/UserNavbar"
 import { Auth } from "aws-amplify"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
 import theme from "../themes"
-import Logo from "./Logo"
+import Logo from "../components/Logo"
 import loginImg from "../images/login.png"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -13,9 +13,9 @@ import Hidden from "@material-ui/core/Hidden"
 import Typography from "@material-ui/core/Typography"
 import { Auth } from "aws-amplify"
 import Validate from "../utility/FormValidation"
-import FormErrors from "./FormErrors"
+import FormErrors from "../components/FormErrors"
 import { setUser } from "../utility/Auth"
-import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 3),
   },
   link: {
+    fontSize: "1rem",
     color: "#6CAE75",
     textDecoration: "none",
     "&:hover, &:focus": {
@@ -119,84 +120,84 @@ function Login() {
   }
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <Grid container component="main" className={classes.root}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={12}
-          md={5}
-          component={Paper}
-          elevation={6}
-          square
-          className={classes.mainGrid}
-        >
-          <div className={classes.paper}>
-            <div style={{ marginBottom: "25px" }}>
-              <Logo text="Greenergy" />
-            </div>
-            <FormErrors formerrors={data.errors} />
-            <form className={classes.form} noValidate onSubmit={handleSubmit}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                onChange={handleInputChange}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                onChange={handleInputChange}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-                style={{ color: "#fff" }}
-              >
-                Sign In
-              </Button>
-              <Link to="/app/signup" className={classes.link}>
-                Don't have an account? Join Now
-              </Link>
-            </form>
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
+      <Grid
+        item
+        xs={12}
+        md={5}
+        component={Paper}
+        elevation={6}
+        square
+        className={classes.mainGrid}
+      >
+        <div className={classes.paper}>
+          <div style={{ marginBottom: "25px" }}>
+            <Logo text="Greenergy" />
           </div>
-        </Grid>
-
-        <Grid item xs={false} md={7} className={classes.image}>
-          <Hidden smDown>
-            <img
-              src={loginImg}
-              width="500px"
-              style={{ marginTop: "75px", marginBottom: "30px" }}
-              alt="icon"
+          <FormErrors formerrors={data.errors} />
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              onChange={handleInputChange}
             />
-            <div style={{ paddingLeft: "100px", paddingRight: "100px" }}>
-              <Typography color="textSecondary">
-                Did you know? <br></br>
-                Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.
-              </Typography>
-            </div>
-          </Hidden>
-        </Grid>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              onChange={handleInputChange}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              style={{ color: "#fff" }}
+            >
+              Sign In
+            </Button>
+            <Link to="/app/signup" className={classes.link}>
+              Don't have an account? Join Now
+            </Link>
+          </form>
+        </div>
       </Grid>
-    </MuiThemeProvider>
+
+      <Grid item xs={false} md={7} className={classes.image}>
+        <Hidden smDown>
+          <img
+            src={loginImg}
+            width="500px"
+            style={{ marginTop: "125px", marginBottom: "50px" }}
+            alt="icon"
+          />
+          <div style={{ paddingLeft: "100px", paddingRight: "100px" }}>
+            <Typography variant="body1" color="textSecondary" gutterBottom>
+              Did you know?
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo consequat. Duis aute irure dolor in reprehenderit in
+              voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum.
+            </Typography>
+          </div>
+        </Hidden>
+      </Grid>
+    </Grid>
   )
 }
 
