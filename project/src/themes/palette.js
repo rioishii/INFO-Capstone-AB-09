@@ -4,7 +4,6 @@ const white = "#FFFFFF"
 const black = "#000000"
 const atlantis = "#6CAE75"
 const coral = "#FF5B14"
-const darkGrey = "#49535B"
 
 export default {
   black,

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { navigate } from "@reach/router"
-import theme from "../themes"
 import Logo from "../components/Logo"
 import graph from "../images/graph.png"
 import Button from "@material-ui/core/Button"
