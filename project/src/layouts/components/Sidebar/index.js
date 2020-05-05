@@ -4,15 +4,10 @@ import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/styles"
 import { Divider, Drawer } from "@material-ui/core"
 import DashboardIcon from "@material-ui/icons/Dashboard"
-import PeopleIcon from "@material-ui/icons/People"
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket"
-import TextFieldsIcon from "@material-ui/icons/TextFields"
-import ImageIcon from "@material-ui/icons/Image"
-import AccountBoxIcon from "@material-ui/icons/AccountBox"
-import SettingsIcon from "@material-ui/icons/Settings"
-import LockOpenIcon from "@material-ui/icons/LockOpen"
-import Profile from './components/Profile'
-import SidebarNav from './components/SidebarNav'
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto"
+import BarChartIcon from "@material-ui/icons/BarChart"
+import Profile from "./components/Profile"
+import SidebarNav from "./components/SidebarNav"
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -30,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
   },
   divider: {
-    margin: theme.spacing(2, 0),
+    marginTop: theme.spacing(2),
   },
   nav: {
     marginBottom: theme.spacing(2),
@@ -45,43 +40,18 @@ const Sidebar = props => {
   const pages = [
     {
       title: "Dashboard",
-      href: "/dashboard",
+      href: "/app/dashboard",
       icon: <DashboardIcon />,
     },
     {
-      title: "Users",
-      href: "/users",
-      icon: <PeopleIcon />,
+      title: "Upload",
+      href: "/app/upload",
+      icon: <AddAPhotoIcon />,
     },
     {
-      title: "Products",
-      href: "/products",
-      icon: <ShoppingBasketIcon />,
-    },
-    {
-      title: "Authentication",
-      href: "/sign-in",
-      icon: <LockOpenIcon />,
-    },
-    {
-      title: "Typography",
-      href: "/typography",
-      icon: <TextFieldsIcon />,
-    },
-    {
-      title: "Icons",
-      href: "/icons",
-      icon: <ImageIcon />,
-    },
-    {
-      title: "Account",
-      href: "/account",
-      icon: <AccountBoxIcon />,
-    },
-    {
-      title: "Settings",
-      href: "/settings",
-      icon: <SettingsIcon />,
+      title: "Charts",
+      href: "/app/charts",
+      icon: <BarChartIcon />,
     },
   ]
 
