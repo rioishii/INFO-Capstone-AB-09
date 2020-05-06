@@ -11,7 +11,6 @@ import {
   Paper,
 } from "@material-ui/core"
 import ArrowBackIcon from "@material-ui/icons/ArrowBack"
-import Logo from "../../components/Logo"
 import loginImg from "../../images/login.png"
 import { Auth } from "aws-amplify"
 import { setUser } from "../../utility/auth"

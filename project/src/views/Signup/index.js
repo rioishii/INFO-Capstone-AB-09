@@ -52,7 +52,7 @@ const schema = {
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.default,
-    height: "100%",
+    height: "100vh",
   },
   grid: {
     height: "100%",
@@ -113,6 +113,15 @@ const useStyles = makeStyles(theme => ({
       paddingRight: theme.spacing(2),
     },
   },
+  verify: {
+    paddingLeft: 100,
+    paddingBottom: 125,
+    flexBasis: 700,
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+    },
+  },
   title: {},
   textField: {
     marginTop: theme.spacing(3),
@@ -146,6 +155,8 @@ const Signup = () => {
     touched: {},
     errors: {},
   })
+
+  const [pageState, setPageState] = useState("signup")
 
   const [cognitoErr, setCognitoErr] = useState("")
 
@@ -182,6 +193,14 @@ const Signup = () => {
     navigate("/")
   }
 
+  const handleToLogin = () => {
+    navigate("/app/login")
+  }
+
+  const handleVerifyBack = () => {
+    setPageState("signup")
+  }
+
   const handleSignUp = async event => {
     event.preventDefault()
     setCognitoErr("")
@@ -195,7 +214,7 @@ const Signup = () => {
           family_name: formState.values.lastName,
         },
       })
-      navigate("/app/dashboard")
+      setPageState("verify")
     } catch (error) {
       let err = error.message
       setCognitoErr(err)
@@ -205,6 +224,181 @@ const Signup = () => {
 
   const hasError = field =>
     formState.touched[field] && formState.errors[field] ? true : false
+
+  const renderContent = () => {
+    if (pageState === "signup") {
+      return (
+        <Grid
+          className={classes.content}
+          item
+          lg={8}
+          xs={12}
+          component={Paper}
+          elevation={6}
+          square
+        >
+          <div className={classes.contentHeader}>
+            <IconButton onClick={handleBack}>
+              <ArrowBackIcon />
+            </IconButton>
+          </div>
+          <div className={classes.contentBody}>
+            <form className={classes.form} onSubmit={handleSignUp}>
+              <Typography variant="h2" color="primary">
+                Create new account
+              </Typography>
+              <Typography color="textSecondary" gutterBottom>
+                Use your email to create new account
+              </Typography>
+              {cognitoErr && (
+                <Typography
+                  variant="body1"
+                  style={{ color: "#F32013", marginTop: "12px" }}
+                >
+                  {cognitoErr}
+                </Typography>
+              )}
+              <TextField
+                className={classes.textField}
+                error={hasError("firstName")}
+                fullWidth
+                helperText={
+                  hasError("firstName") ? formState.errors.firstName[0] : null
+                }
+                label="First name"
+                name="firstName"
+                onChange={handleChange}
+                type="text"
+                value={formState.values.firstName || ""}
+                variant="outlined"
+              />
+              <TextField
+                className={classes.textField}
+                error={hasError("lastName")}
+                fullWidth
+                helperText={
+                  hasError("lastName") ? formState.errors.lastName[0] : null
+                }
+                label="Last name"
+                name="lastName"
+                onChange={handleChange}
+                type="text"
+                value={formState.values.lastName || ""}
+                variant="outlined"
+              />
+              <TextField
+                className={classes.textField}
+                error={hasError("email")}
+                fullWidth
+                helperText={
+                  hasError("email") ? formState.errors.email[0] : null
+                }
+                label="Email address"
+                name="email"
+                onChange={handleChange}
+                type="text"
+                value={formState.values.email || ""}
+                variant="outlined"
+              />
+              <TextField
+                className={classes.textField}
+                error={hasError("password")}
+                fullWidth
+                helperText={
+                  hasError("password") ? formState.errors.password[0] : null
+                }
+                label="Password"
+                name="password"
+                onChange={handleChange}
+                type="password"
+                value={formState.values.password || ""}
+                variant="outlined"
+              />
+              <div className={classes.policy}>
+                <Checkbox
+                  checked={formState.values.policy || false}
+                  className={classes.policyCheckbox}
+                  color="primary"
+                  name="policy"
+                  onChange={handleChange}
+                />
+                <Typography
+                  className={classes.policyText}
+                  color="textPrimary"
+                  variant="body1"
+                >
+                  I have read the{" "}
+                  <MLink color="primary" to="#" underline="always" variant="h6">
+                    Terms and Conditions
+                  </MLink>
+                </Typography>
+              </div>
+              {hasError("policy") && (
+                <FormHelperText error>
+                  {formState.errors.policy[0]}
+                </FormHelperText>
+              )}
+              <Button
+                className={classes.signUpButton}
+                color="primary"
+                disabled={!formState.isValid}
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+              >
+                Sign up now
+              </Button>
+              <Typography variant="body1">
+                <Link to="/app/login" className={classes.link}>
+                  Have an account? Sign in
+                </Link>
+              </Typography>
+            </form>
+          </div>
+        </Grid>
+      )
+    } else {
+      return (
+        <Grid
+          className={classes.content}
+          item
+          lg={8}
+          xs={12}
+          component={Paper}
+          elevation={6}
+          square
+        >
+          <div className={classes.contentHeader}>
+            <IconButton onClick={handleVerifyBack}>
+              <ArrowBackIcon />
+            </IconButton>
+          </div>
+          <div className={classes.contentBody}>
+            <div className={classes.verify}>
+              <Typography variant="h2" color="primary" gutterBottom>
+                Verify Email
+              </Typography>
+              <Typography color="textPrimary" variant="body1" gutterBottom>
+                Thank you for registering! We have sent you an email with a link
+                to verify your account. Please click the link in that email and sign in to continue.
+              </Typography>
+
+              <Button
+                className={classes.signUpButton}
+                color="primary"
+                size="large"
+                variant="contained"
+                onClick={handleToLogin}
+              >
+                Sign in
+              </Button>
+            </div>
+          </div>
+        </Grid>
+      )
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -223,142 +417,8 @@ const Signup = () => {
             </div>
           </div>
         </Grid>
-        <Grid
-          className={classes.content}
-          item
-          lg={8}
-          xs={12}
-          component={Paper}
-          elevation={6}
-          square
-        >
-          <div className={classes.content}>
-            <div className={classes.contentHeader}>
-              <IconButton onClick={handleBack}>
-                <ArrowBackIcon />
-              </IconButton>
-            </div>
-            <div className={classes.contentBody}>
-              <form className={classes.form} onSubmit={handleSignUp}>
-                <Typography variant="h2" color="primary">
-                  Create new account
-                </Typography>
-                <Typography color="textSecondary" gutterBottom>
-                  Use your email to create new account
-                </Typography>
-                {cognitoErr && (
-                  <Typography
-                    variant="body1"
-                    style={{ color: "#F32013", marginTop: "12px" }}
-                  >
-                    {cognitoErr}
-                  </Typography>
-                )}
-                <TextField
-                  className={classes.textField}
-                  error={hasError("firstName")}
-                  fullWidth
-                  helperText={
-                    hasError("firstName") ? formState.errors.firstName[0] : null
-                  }
-                  label="First name"
-                  name="firstName"
-                  onChange={handleChange}
-                  type="text"
-                  value={formState.values.firstName || ""}
-                  variant="outlined"
-                />
-                <TextField
-                  className={classes.textField}
-                  error={hasError("lastName")}
-                  fullWidth
-                  helperText={
-                    hasError("lastName") ? formState.errors.lastName[0] : null
-                  }
-                  label="Last name"
-                  name="lastName"
-                  onChange={handleChange}
-                  type="text"
-                  value={formState.values.lastName || ""}
-                  variant="outlined"
-                />
-                <TextField
-                  className={classes.textField}
-                  error={hasError("email")}
-                  fullWidth
-                  helperText={
-                    hasError("email") ? formState.errors.email[0] : null
-                  }
-                  label="Email address"
-                  name="email"
-                  onChange={handleChange}
-                  type="text"
-                  value={formState.values.email || ""}
-                  variant="outlined"
-                />
-                <TextField
-                  className={classes.textField}
-                  error={hasError("password")}
-                  fullWidth
-                  helperText={
-                    hasError("password") ? formState.errors.password[0] : null
-                  }
-                  label="Password"
-                  name="password"
-                  onChange={handleChange}
-                  type="password"
-                  value={formState.values.password || ""}
-                  variant="outlined"
-                />
-                <div className={classes.policy}>
-                  <Checkbox
-                    checked={formState.values.policy || false}
-                    className={classes.policyCheckbox}
-                    color="primary"
-                    name="policy"
-                    onChange={handleChange}
-                  />
-                  <Typography
-                    className={classes.policyText}
-                    color="textPrimary"
-                    variant="body1"
-                  >
-                    I have read the{" "}
-                    <MLink
-                      color="primary"
-                      to="#"
-                      underline="always"
-                      variant="h6"
-                    >
-                      Terms and Conditions
-                    </MLink>
-                  </Typography>
-                </div>
-                {hasError("policy") && (
-                  <FormHelperText error>
-                    {formState.errors.policy[0]}
-                  </FormHelperText>
-                )}
-                <Button
-                  className={classes.signUpButton}
-                  color="primary"
-                  disabled={!formState.isValid}
-                  fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                >
-                  Sign up now
-                </Button>
-                <Typography variant="body1">
-                  <Link to="/app/login" className={classes.link}>
-                    Have an account? Sign in
-                  </Link>
-                </Typography>
-              </form>
-            </div>
-          </div>
-        </Grid>
+
+        {renderContent()}
       </Grid>
     </div>
   )

@@ -9,9 +9,9 @@ import PrivateRoute from "../components/PrivateRoute"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { Chart } from "react-chartjs-2"
 import "react-perfect-scrollbar/dist/css/styles.css"
-import '../assets/scss/index.scss'
-import validate from 'validate.js';
-import validators from '../utility/validators'
+import "../assets/scss/index.scss"
+import validate from "validate.js"
+import validators from "../utility/validators"
 import chartjs from "../utility/chartjs"
 import theme from "../themes"
 
