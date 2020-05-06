@@ -12,7 +12,7 @@ import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import InputIcon from "@material-ui/icons/Input"
 import { Auth } from "aws-amplify"
-import { logout } from "../../../../../utility/Auth"
+import { logout } from "../../../../../utility/auth"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -110,19 +110,15 @@ const SidebarNav = props => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          Logout
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">Logout</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Are you sure you want to logout from Greenergy?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button onClick={handleSignout} color="primary" autoFocus>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleSignout} color="primary">
             Yes, logout
           </Button>
         </DialogActions>

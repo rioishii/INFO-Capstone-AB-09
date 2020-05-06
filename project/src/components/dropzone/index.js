@@ -28,8 +28,8 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     color: "#fff",
-    width: "100%"
-  }
+    width: "100%",
+  },
 }))
 
 const baseStyle = {
@@ -223,12 +223,10 @@ const Dropzone = () => {
   }
 
   return (
-  <Paper elevation={3} className={classes.paper}>
-    {renderCard()}
-  </Paper>
+    <Paper elevation={3} className={classes.paper}>
+      {renderCard()}
+    </Paper>
   )
 }
 
 export default Dropzone
-
-

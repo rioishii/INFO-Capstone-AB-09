@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Avatar, Typography } from '@material-ui/core';
-import { getCurrentUser } from "../../../../../utility/Auth"
+import { getCurrentUser } from "../../../../../utility/auth"
 import calvin from "../../../../../images/calvin.png"
 
 const useStyles = makeStyles(theme => ({

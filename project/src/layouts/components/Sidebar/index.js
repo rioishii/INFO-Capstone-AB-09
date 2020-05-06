@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     width: 240,
     [theme.breakpoints.up("sm")]: {
-      marginTop: 81,
+      marginTop: 76,
       height: "calc(100% - 64px)",
     },
   },

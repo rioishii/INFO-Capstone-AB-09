@@ -1,6 +1,6 @@
 import React from "react"
 import { navigate } from "@reach/router"
-import { isLoggedIn } from "../../utility/Auth"
+import { isLoggedIn } from "../../utility/auth"
 import Main from "../../layouts"
 
 class PrivateRoute extends React.Component {

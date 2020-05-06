@@ -20,7 +20,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import InputIcon from "@material-ui/icons/Input"
 import Logo from "../../../components/Logo"
 import { Auth } from "aws-amplify"
-import { logout } from "../../../utility/Auth"
+import { logout } from "../../../utility/auth"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -91,7 +91,7 @@ const Topbar = props => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSignout} color="primary" autoFocus>
+          <Button onClick={handleSignout} color="primary">
             Yes, logout
           </Button>
         </DialogActions>

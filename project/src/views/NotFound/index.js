@@ -2,7 +2,7 @@ import React from "react"
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles"
 import { Grid, Typography } from "@material-ui/core"
 import notFound from "../images/notFound.png"
-import theme from "../themes"
+import theme from "../../themes"
 
 const useStyles = makeStyles(theme => ({
   root: {

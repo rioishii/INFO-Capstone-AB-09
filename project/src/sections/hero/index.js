@@ -33,6 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
   signin: {
     color: "#49535B",
+    textDecoration: "underline",
   },
 }))
 
@@ -42,12 +43,7 @@ const Hero = () => {
   return (
     <section id="hero">
       <Container className={classes.hero}>
-        <Grid
-          container
-          spacing={0}
-          alignItems="center"
-          justify="center"
-        >
+        <Grid container spacing={0} alignItems="center" justify="center">
           <Grid item md={6}>
             <Typography variant="h1" color="textPrimary" gutterBottom>
               <strong>You emit what you eat.</strong>
