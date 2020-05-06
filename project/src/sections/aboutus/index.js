@@ -33,7 +33,7 @@ const Aboutus = () => {
   return (
     <section id="aboutus">
       <Typography
-        variant="h4"
+        variant="h1"
         align="center"
         color="secondary"
         style={{ marginBottom: "50px" }}

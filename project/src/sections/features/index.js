@@ -37,7 +37,7 @@ const Features = () => {
     <section id="features">
       <Container className={classes.features} maxWidth="lg">
         <Typography
-          variant="h4"
+          variant="h1"
           align="center"
           color="secondary"
           style={{ marginBottom: "50px" }}
@@ -53,12 +53,12 @@ const Features = () => {
                 title="Image title"
               />
               <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h6" color="primary">
+                <Typography gutterBottom variant="subtitle1" color="primary">
                   <strong>
                     Calculate how much carbon is emitted from your food
                   </strong>
                 </Typography>
-                <Typography>
+                <Typography variant="body1">
                   ed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
                   ipsa quae ab illo inventore veritatis et quasi architecto
@@ -77,10 +77,10 @@ const Features = () => {
                 title="Image title"
               />
               <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h6" color="primary">
+                <Typography gutterBottom variant="subtitle1" color="primary">
                   <strong>Compare your carbon footprint to other peers</strong>
                 </Typography>
-                <Typography>
+                <Typography variant="body1">
                   ed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
                   ipsa quae ab illo inventore veritatis et quasi architecto
@@ -99,10 +99,10 @@ const Features = () => {
                 title="Image title"
               />
               <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h6" color="primary">
+                <Typography gutterBottom variant="subtitle1" color="primary">
                   <strong>Provide solutions to the things you eat</strong>
                 </Typography>
-                <Typography>
+                <Typography variant="body1">
                   ed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
                   ipsa quae ab illo inventore veritatis et quasi architecto

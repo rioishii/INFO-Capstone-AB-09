@@ -8,11 +8,10 @@ function Logo(props) {
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
       }}
     >
-      <img src={logo} alt="logo" style={{ marginRight: "15px" }} />
-      <Typography variant="h5" color="primary">
+      <img src={logo} alt="logo" style={{ marginRight: "12px" }} />
+      <Typography variant="h3" color="primary">
         <strong>{props.text}</strong>
       </Typography>
     </div>

@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       textDecoration: "underline",
       textDecorationColor: "#8ED73D",
     },
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     padding: theme.spacing(4),
   },
   loginButton: {
