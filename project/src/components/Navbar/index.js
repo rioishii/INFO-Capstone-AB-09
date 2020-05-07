@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4),
   },
   loginButton: {
-    marginRight: theme.spacing(3),
+    marginRight: theme.spacing(2),
   },
   signupLink: {
     color: "#fff",
@@ -96,7 +96,7 @@ export default function Navbar() {
             </SLink>
           </div>
           <Button
-            size="large"
+            size="medium"
             variant="outlined"
             className={classes.loginButton}
           >
@@ -104,7 +104,7 @@ export default function Navbar() {
               Login
             </Link>
           </Button>
-          <Button color="primary" variant="contained" size="large">
+          <Button color="primary" variant="contained" size="medium">
             <Link to="/app/signup" className={classes.signupLink}>
               Sign up
             </Link>

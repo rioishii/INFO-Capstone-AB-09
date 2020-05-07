@@ -4,7 +4,7 @@ import Login from "../views/Login"
 import Signup from "../views/Signup"
 import Dashboard from "../views/Dashboard"
 import Upload from "../views/Upload"
-import Charts from "../views/Charts"
+import History from "../views/History"
 import PrivateRoute from "../components/PrivateRoute"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { Chart } from "react-chartjs-2"
@@ -29,7 +29,7 @@ const App = () => (
     <Router>
       <PrivateRoute path="/app/dashboard" component={Dashboard} />
       <PrivateRoute path="/app/upload" component={Upload} />
-      <PrivateRoute path="/app/charts" component={Charts} />
+      <PrivateRoute path="/app/history" component={History} />
       <Login path="/app/login" />
       <Signup path="/app/signup" />
     </Router>

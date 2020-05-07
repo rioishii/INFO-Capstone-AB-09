@@ -3,14 +3,7 @@ import { navigate } from "@reach/router"
 import clsx from "clsx"
 import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/styles"
-import {
-  AppBar,
-  Container,
-  Toolbar,
-  Hidden,
-  IconButton,
-  Button,
-} from "@material-ui/core"
+import { AppBar, Toolbar, Hidden, IconButton, Button } from "@material-ui/core"
 import Dialog from "@material-ui/core/Dialog"
 import DialogActions from "@material-ui/core/DialogActions"
 import DialogContent from "@material-ui/core/DialogContent"
@@ -61,22 +54,20 @@ const Topbar = props => {
 
   return (
     <AppBar {...rest} className={clsx(classes.root, className)}>
-      <Container>
-        <Toolbar className={classes.toolbar}>
-          <Logo text="Greenergy" />
-          <div className={classes.flexGrow} />
-          <Hidden mdDown>
-            <IconButton color="primary" onClick={handleClickOpen}>
-              <InputIcon fontSize="large" />
-            </IconButton>
-          </Hidden>
-          <Hidden lgUp>
-            <IconButton color="primary" onClick={onSidebarOpen}>
-              <MenuIcon />
-            </IconButton>
-          </Hidden>
-        </Toolbar>
-      </Container>
+      <Toolbar className={classes.toolbar}>
+        <Logo text="Greenergy" />
+        <div className={classes.flexGrow} />
+        <Hidden mdDown>
+          <IconButton color="primary" onClick={handleClickOpen}>
+            <InputIcon fontSize="large" />
+          </IconButton>
+        </Hidden>
+        <Hidden lgUp>
+          <IconButton color="primary" onClick={onSidebarOpen}>
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+      </Toolbar>
       <Dialog
         open={open}
         onClose={handleClose}

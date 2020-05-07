@@ -11,7 +11,8 @@ import Paper from "@material-ui/core/Paper"
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    maxWidth: "450px",
+    height: '100%',
+    width: '100%',
     textAlign: "center",
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),

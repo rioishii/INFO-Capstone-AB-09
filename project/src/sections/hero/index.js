@@ -43,8 +43,8 @@ const Hero = () => {
   return (
     <section id="hero">
       <Container className={classes.hero}>
-        <Grid container spacing={0} alignItems="center" justify="center">
-          <Grid item md={6}>
+        <Grid container spacing={0} alignItems="center" justify="center" spacing={4}>
+          <Grid item md={7} xs={12}>
             <Typography variant="h1" color="textPrimary" gutterBottom>
               <strong>You emit what you eat.</strong>
             </Typography>
@@ -103,7 +103,7 @@ const Hero = () => {
             </Card>
           </Grid>
 
-          <Grid item md={6} align="center">
+          <Grid item md={5} xs={12}>
             <Dropzone />
           </Grid>
         </Grid>

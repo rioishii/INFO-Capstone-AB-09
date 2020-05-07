@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles"
 import { Divider, Drawer } from "@material-ui/core"
 import DashboardIcon from "@material-ui/icons/Dashboard"
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto"
-import BarChartIcon from "@material-ui/icons/BarChart"
+import TimelineIcon from '@material-ui/icons/Timeline';
 import Profile from "./components/Profile"
 import SidebarNav from "./components/SidebarNav"
 
@@ -49,9 +49,9 @@ const Sidebar = props => {
       icon: <AddAPhotoIcon />,
     },
     {
-      title: "Charts",
-      href: "/app/charts",
-      icon: <BarChartIcon />,
+      title: "History",
+      href: "/app/history",
+      icon: <TimelineIcon />,
     },
   ]
 
