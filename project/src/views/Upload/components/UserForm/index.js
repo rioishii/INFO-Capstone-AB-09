@@ -4,6 +4,9 @@ import LocalForm from "../LocalForm"
 import ServingsForm from "../ServingsForm"
 import Result from "../Result"
 import { Paper } from "@material-ui/core"
+import Stepper from "@material-ui/core/Stepper"
+import Step from "@material-ui/core/Step"
+import StepLabel from "@material-ui/core/StepLabel"
 import { makeStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles(theme => ({
@@ -13,30 +16,30 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+function getSteps() {
+  return ["Organic", "Local", "Servings"]
+}
+
 const UserForm = () => {
   const classes = useStyles()
+  const [activeStep, setActiveStep] = useState(0)
+  const steps = getSteps()
   const [formState, setFormState] = useState({
-    step: 1,
     isOrganic: false,
     isLocal: false,
     servings: 1,
   })
 
-  const nextStep = () => {
-    const { step } = formState
-    console.log(formState)
-    setFormState({
-      ...formState,
-      step: step + 1,
-    })
+  const handleNext = () => {
+    setActiveStep(prevActiveStep => prevActiveStep + 1)
   }
 
-  const prevStep = () => {
-    const { step } = formState
-    setFormState({
-      ...formState,
-      step: step - 1,
-    })
+  const handleBack = () => {
+    setActiveStep(prevActiveStep => prevActiveStep - 1)
+  }
+
+  const handleReset = () => {
+    setActiveStep(0)
   }
 
   const handleChange = input => e => {
@@ -52,35 +55,33 @@ const UserForm = () => {
     })
   }
 
-  const { step } = formState
   const { isOrganic, isLocal, servings } = formState
   const values = { isOrganic, isLocal, servings }
 
   const renderContent = () => {
-      console.log(formState)
-    switch (step) {
-      case 1:
+    switch (activeStep) {
+      case 0:
         return (
           <OrganicForm
-            nextStep={nextStep}
+            handleNext={handleNext}
+            handleChange={handleChange}
+            values={values}
+          />
+        )
+      case 1:
+        return (
+          <LocalForm
+            handleNext={handleNext}
+            handleBack={handleBack}
             handleChange={handleChange}
             values={values}
           />
         )
       case 2:
         return (
-          <LocalForm
-            nextStep={nextStep}
-            prevStep={prevStep}
-            handleChange={handleChange}
-            values={values}
-          />
-        )
-      case 3:
-        return (
           <ServingsForm
-            nextStep={nextStep}
-            prevStep={prevStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
             handleChange={handleChange}
             values={values}
           />
@@ -90,9 +91,26 @@ const UserForm = () => {
     }
   }
 
+  const renderStepper = () => {
+    if (activeStep < 3) {
+      return (
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map(label => {
+            return (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            )
+          })}
+        </Stepper>
+      )
+    }
+  }
+
   return (
     <Paper elevation={3} className={classes.root}>
       {renderContent()}
+      {renderStepper()}
     </Paper>
   )
 }

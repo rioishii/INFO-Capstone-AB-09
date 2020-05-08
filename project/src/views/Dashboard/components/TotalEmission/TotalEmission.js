@@ -57,7 +57,7 @@ const TotalEmission = props => {
               color="inherit"
               variant="h3"
             >
-              2351 lbs
+              42069 lbs
             </Typography>
           </Grid>
           <Grid item>

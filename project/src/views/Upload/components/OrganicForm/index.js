@@ -13,19 +13,21 @@ import { makeStyles } from "@material-ui/styles"
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.neutral,
-    height: "100%",
+    height: "78%",
     display: "flex",
     justifyContent: "center",
   },
   inner: {
     textAlign: "center",
-    paddingTop: theme.spacing(12),
+    paddingTop: theme.spacing(10),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+    paddingBottom: theme.spacing(2)
   },
   questionText: {
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(4),
   },
   group: {
-    marginTop: theme.spacing(2),
     justifyContent: "center",
   },
   button: {
@@ -37,12 +39,7 @@ const useStyles = makeStyles(theme => ({
 const OrganicForm = props => {
   const classes = useStyles()
 
-  const { values, handleChange } = props
-  
-  const handleNext = e => {
-      e.preventDefault()
-      props.nextStep()
-  }
+  const { values, handleChange, handleNext } = props
 
   return (
     <div className={classes.root}>
@@ -66,7 +63,7 @@ const OrganicForm = props => {
             aria-label="isOrganic"
             name="isOrganic"
             value={String(values.isOrganic)}
-            onChange={handleChange('isOrganic')}
+            onChange={handleChange("isOrganic")}
             row
             className={classes.group}
           >

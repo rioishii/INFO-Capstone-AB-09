@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/styles"
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.neutral,
-    height: "100%",
+    height: "78%",
   },
   container: {
     display: "flex",
@@ -24,13 +24,14 @@ const useStyles = makeStyles(theme => ({
   },
   inner: {
     textAlign: "center",
-    paddingTop: theme.spacing(3),
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
+    paddingBottom: theme.spacing(2)
   },
   questionText: {
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(4),
   },
   group: {
-    marginTop: theme.spacing(2),
     justifyContent: "center",
   },
   button: {
@@ -42,22 +43,12 @@ const useStyles = makeStyles(theme => ({
 const ServingsForm = props => {
   const classes = useStyles()
 
-  const { values, handleChange } = props
-
-  const handleNext = e => {
-    e.preventDefault()
-    props.nextStep()
-  }
-
-  const handlePrev = e => {
-    e.preventDefault()
-    props.prevStep()
-  }
+  const { values, handleChange, handleNext, handleBack } = props
 
   return (
     <div className={classes.root}>
       <div className={classes.backIcon}>
-        <IconButton onClick={handlePrev}>
+        <IconButton onClick={handleBack}>
           <ArrowBackIcon fontSize="large" color="secondary" />
         </IconButton>
       </div>
@@ -87,7 +78,7 @@ const ServingsForm = props => {
                   shrink: true,
                 }}
                 variant="outlined"
-                style={{ width: "50%" }}
+                style={{ width: "35%" }}
                 defaultValue={values.servings}
                 onChange={handleChange('servings')}
               />

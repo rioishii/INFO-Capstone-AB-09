@@ -16,10 +16,10 @@ const Upload = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={4}>
-        <Grid item sm={5} xs={12}>
+        <Grid item md={5} xs={12}>
           <Dropzone />
         </Grid>
-        <Grid item sm={7} xs={12}>
+        <Grid item md={7} xs={12}>
           <UserForm />
         </Grid>
       </Grid>
