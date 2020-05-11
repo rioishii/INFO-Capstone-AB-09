@@ -1,6 +1,6 @@
 import React from "react"
 
 
-export default function Welcome() {
+export default function History() {
   return <div />
 }
