@@ -25,8 +25,8 @@ const useStyles = makeStyles(theme => ({
   },
   cardContent: {
     flexGrow: 1,
-    paddingLeft: theme.spacing(7),
-    paddingRight: theme.spacing(7),
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
   },
 }))
 
@@ -45,7 +45,7 @@ const Features = () => {
           <strong>Features</strong>
         </Typography>
         <Grid container spacing={4}>
-          <Grid item md={4}>
+          <Grid item sm={4}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
@@ -69,7 +69,7 @@ const Features = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item md={4}>
+          <Grid item sm={4}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
@@ -91,7 +91,7 @@ const Features = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item md={4}>
+          <Grid item sm={4}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}

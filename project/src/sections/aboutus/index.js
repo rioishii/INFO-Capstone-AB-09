@@ -18,13 +18,18 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
   },
   aboutUsImg: {
-    width: "100%",
-    height: "auto",
     marginRight: theme.spacing(4),
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   aboutUsProfile: {
     color: "white",
   },
+  imgContainer: {
+    width: "100%",
+  }
 }))
 
 const Aboutus = () => {
@@ -44,7 +49,9 @@ const Aboutus = () => {
         <Container>
           <Grid container spacing={10}>
             <Grid item md={6} className={classes.aboutUsBox}>
-              <img src={wobin} className={classes.aboutUsImg} alt="wobin" />
+              <div className={classes.imgContainer}>
+                <img src={wobin} className={classes.aboutUsImg} alt="wobin" />
+              </div>
               <Typography variant="body1" className={classes.aboutUsProfile}>
                 <strong>Wo Bin Chen</strong> <br></br>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -55,7 +62,9 @@ const Aboutus = () => {
               </Typography>
             </Grid>
             <Grid item md={6} className={classes.aboutUsBox}>
-              <img src={calvin} className={classes.aboutUsImg} alt="calvin" />
+              <div className={classes.imgContainer}>
+                <img src={calvin} className={classes.aboutUsImg} alt="calvin" />
+              </div>
               <Typography variant="body1" className={classes.aboutUsProfile}>
                 <strong>Calvin Chen</strong> <br></br>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -66,7 +75,9 @@ const Aboutus = () => {
               </Typography>
             </Grid>
             <Grid item md={6} className={classes.aboutUsBox}>
-              <img src={rio} className={classes.aboutUsImg} alt="rio" />
+              <div className={classes.imgContainer}>
+                <img src={rio} className={classes.aboutUsImg} alt="rio" />
+              </div>
               <Typography variant="body1" className={classes.aboutUsProfile}>
                 <strong>Rio Ishii</strong> <br></br>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -77,7 +88,9 @@ const Aboutus = () => {
               </Typography>
             </Grid>
             <Grid item md={6} className={classes.aboutUsBox}>
-              <img src={ray} className={classes.aboutUsImg} alt="ray" />
+              <div className={classes.imgContainer}>
+                <img src={ray} className={classes.aboutUsImg} alt="ray" />
+              </div>
               <Typography variant="body1" className={classes.aboutUsProfile}>
                 <strong>Ray Zhang</strong> <br></br>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
