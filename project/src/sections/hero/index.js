@@ -35,6 +35,10 @@ const useStyles = makeStyles(theme => ({
     color: "#49535B",
     textDecoration: "underline",
   },
+  dropzoneContainer: {
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6)
+  }
 }))
 
 const Hero = () => {
@@ -104,7 +108,9 @@ const Hero = () => {
           </Grid>
 
           <Grid item sm={6} xs={12}>
-            <Dropzone />
+            <div className={classes.dropzoneContainer}>
+              <Dropzone />
+            </div>
           </Grid>
         </Grid>
       </Container>
