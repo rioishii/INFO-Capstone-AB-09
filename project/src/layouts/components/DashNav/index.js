@@ -64,7 +64,7 @@ const Topbar = props => {
         </Hidden>
         <Hidden lgUp>
           <IconButton color="primary" onClick={onSidebarOpen}>
-            <MenuIcon />
+            <MenuIcon  fontSize="large"/>
           </IconButton>
         </Hidden>
       </Toolbar>

@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useMemo } from "react"
+import React, { useEffect, useState, useMemo } from "./node_modules/react"
 import uploadIcon from "../../images/upload.png"
-import axios from "axios"
-import { useDropzone } from "react-dropzone"
+import axios from "./node_modules/axios"
+import { useDropzone } from "./node_modules/react-dropzone"
 import theme from "../../themes"
-import Container from "@material-ui/core/Container"
-import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
-import { makeStyles } from "@material-ui/core/styles"
-import Paper from "@material-ui/core/Paper"
+import Container from "./node_modules/@material-ui/core/Container"
+import Button from "./node_modules/@material-ui/core/Button"
+import Typography from "./node_modules/@material-ui/core/Typography"
+import { makeStyles } from "./node_modules/@material-ui/core/styles"
+import Paper from "./node_modules/@material-ui/core/Paper"
 
 const useStyles = makeStyles(theme => ({
   paper: {

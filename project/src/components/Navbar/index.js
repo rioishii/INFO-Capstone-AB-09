@@ -4,7 +4,6 @@ import { Link as SLink } from "react-scroll"
 import Logo from "../Logo"
 import Toolbar from "@material-ui/core/Toolbar"
 import Button from "@material-ui/core/Button"
-import Container from "@material-ui/core/Container"
 import AppBar from "@material-ui/core/AppBar"
 import { Link } from "gatsby"
 
@@ -50,67 +49,65 @@ export default function Navbar() {
 
   return (
     <AppBar position="sticky" className={classes.appbar}>
-      <Container>
-        <Toolbar className={classes.toolbar}>
-          <Logo text="Greenergy" />
-          <div className={classes.toolbarLinks}>
-            <SLink
-              className={classes.link}
-              to="hero"
-              spy={true}
-              smooth={true}
-              offset={-200}
-              duration={500}
-            >
-              Home
-            </SLink>
-            <SLink
-              className={classes.link}
-              to="features"
-              spy={true}
-              smooth={true}
-              offset={-125}
-              duration={500}
-            >
-              Features
-            </SLink>
-            <SLink
-              className={classes.link}
-              to="whyus"
-              spy={true}
-              smooth={true}
-              offset={-125}
-              duration={500}
-            >
-              Why Us?
-            </SLink>
-            <SLink
-              className={classes.link}
-              to="aboutus"
-              spy={true}
-              smooth={true}
-              offset={-125}
-              duration={500}
-            >
-              About Us
-            </SLink>
-          </div>
-          <Button
-            size="medium"
-            variant="outlined"
-            className={classes.loginButton}
+      <Toolbar className={classes.toolbar}>
+        <Logo text="Greenergy" />
+        <div className={classes.toolbarLinks}>
+          <SLink
+            className={classes.link}
+            to="hero"
+            spy={true}
+            smooth={true}
+            offset={-200}
+            duration={500}
           >
-            <Link to="/app/login" className={classes.loginLink}>
-              Login
-            </Link>
-          </Button>
-          <Button color="primary" variant="contained" size="medium">
-            <Link to="/app/signup" className={classes.signupLink}>
-              Sign up
-            </Link>
-          </Button>
-        </Toolbar>
-      </Container>
+            Home
+          </SLink>
+          <SLink
+            className={classes.link}
+            to="features"
+            spy={true}
+            smooth={true}
+            offset={-125}
+            duration={500}
+          >
+            Features
+          </SLink>
+          <SLink
+            className={classes.link}
+            to="whyus"
+            spy={true}
+            smooth={true}
+            offset={-125}
+            duration={500}
+          >
+            Why Us?
+          </SLink>
+          <SLink
+            className={classes.link}
+            to="aboutus"
+            spy={true}
+            smooth={true}
+            offset={-125}
+            duration={500}
+          >
+            About Us
+          </SLink>
+        </div>
+        <Button
+          size="medium"
+          variant="outlined"
+          className={classes.loginButton}
+        >
+          <Link to="/app/login" className={classes.loginLink}>
+            Login
+          </Link>
+        </Button>
+        <Button color="primary" variant="contained" size="medium">
+          <Link to="/app/signup" className={classes.signupLink}>
+            Sign up
+          </Link>
+        </Button>
+      </Toolbar>
     </AppBar>
   )
 }

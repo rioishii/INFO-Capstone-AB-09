@@ -40,6 +40,11 @@ const UserForm = () => {
 
   const handleReset = () => {
     setActiveStep(0)
+    setFormState({
+      isOrganic: false,
+      isLocal: false,
+      servings: 1,
+    })
   }
 
   const handleChange = input => e => {
@@ -87,7 +92,7 @@ const UserForm = () => {
           />
         )
       default:
-        return <Result />
+        return <Result handleReset={handleReset} />
     }
   }
 
