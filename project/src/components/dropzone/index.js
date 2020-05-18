@@ -92,6 +92,7 @@ const Dropzone = () => {
   const classes = useStyles()
   const [files, setFiles] = useState([])
   const [score, setScore] = useState("")
+  const [carMiles, setCarMiles] = useState("")
   const [prediction, setPrediction] = useState("")
   const [probability, setProbability] = useState("")
   const {
@@ -119,11 +120,14 @@ const Dropzone = () => {
     setPrediction("")
     setProbability("")
   }
+  
+  function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }
 
   const onImageSubmit = () => {
-    setScore("69")
     const formData = new FormData()
-    formData.append("image", files)
+    formData.append("image", files[0])
 
     axios
       .post("http://127.0.0.1:5000/predict", formData, {
@@ -132,7 +136,11 @@ const Dropzone = () => {
         },
       })
       .then(res => {
+        console.log(res.data)
         if (res.data.success === true) {
+          console.log(res.data.prediction)
+          setScore(res.data.emissions)
+          setCarMiles(round(res.data.emissions * 2.32, 2))
           setPrediction(res.data.prediction)
           setProbability(res.data.probability)
         }
@@ -205,11 +213,14 @@ const Dropzone = () => {
           <Typography variant="h4" color="primary" align="center" gutterBottom>
             <strong>Score: {score}</strong>
           </Typography>
+          <Typography variant="h5" color="primary" align="center" gutterBottom>
+            <strong>About the same as driving {carMiles} miles in your car</strong>
+          </Typography>
           <Typography variant="body1" color="primary">
-            {/* {probability} {prediction} */}
-            <strong>99% steak</strong>
+            {probability} this is {prediction}
           </Typography>
           {renderImage()}
+          <small> This score is based on C02 Kilos per ~1 pound serving of food </small>
           <Button
             variant="contained"
             color="primary"
