@@ -11,8 +11,9 @@
     "aws-amplify": "^3.0.8",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "framer-motion": "^1.11.0",
     "gatsby": "^2.19.7",
-    "gatsby-cli": "^2.12.5",
+    "gatsby-cli": "^2.12.29",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",
@@ -31,6 +32,10 @@
     "react-helmet": "^5.2.1",
     "react-perfect-scrollbar": "^1.5.8",
     "react-scroll": "^1.7.16",
+    "styled-components": "^5.1.0",
+    "tailwindcss": "^1.4.6",
+    "twin.macro": "^1.1.0",
+    "use-in-view": "^1.0.15",
     "validate.js": "^0.13.1"
   },
   "devDependencies": {

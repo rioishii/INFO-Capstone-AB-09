@@ -1,27 +1,33 @@
 import React from "react"
-import theme from "../themes"
-import Navbar from "../components/Navbar"
-import Hero from "../sections/hero"
-import Features from "../sections/features"
-import Whyus from "../sections/whyus"
-import Aboutus from "../sections/aboutus"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import Footer from "../components/Footer"
-import { MuiThemeProvider } from "@material-ui/core/styles"
+import tw from "twin.macro"
+import "tailwindcss/dist/base.css"
+import AnimationRevealPage from "../landingpage/helper/AnimationRevealPage"
+import Hero from "../landingpage/components/Hero"
+import Features from "../landingpage/components/Features"
+import Steps from "../landingpage/components/Steps"
+import stepsImage from "../images/login.png"
+import Footer from "../landingpage/components/Footer"
 
 const LandingPage = () => {
+  const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`
+  const HighlightedText = tw.span`text-primary-500`
+
   return (
-    <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <Whyus />
-        <Aboutus />
-      </main>
+    <AnimationRevealPage>
+      <Hero roundedHeaderButton={true} />
+      <Features />
+      <Steps
+        subheading={<Subheading>STEPS</Subheading>}
+        heading={
+          <>
+            Easy to <HighlightedText>Get Started.</HighlightedText>
+          </>
+        }
+        textOnLeft={false}
+        imageSrc={stepsImage}
+      />
       <Footer />
-    </MuiThemeProvider>
+    </AnimationRevealPage>
   )
 }
 
