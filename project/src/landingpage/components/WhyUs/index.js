@@ -2,13 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import tw from "twin.macro"
 import { css } from "styled-components/macro" //eslint-disable-line
-import { SectionHeading, Subheading as SubheadingBase } from "../Heading"
-import { SectionDescription } from "../Typography"
-import {
-  Container,
-  ContentWithPaddingXl,
-  ContentWithPaddingLg,
-} from "../Layouts"
+import { SectionHeading } from "../Heading"
+import { Container, ContentWithPaddingLg } from "../Layouts"
 import whyusImg1 from "../../../images/whyus1.png"
 import whyusImg2 from "../../../images/whyus2.png"
 import whyusImg3 from "../../../images/Car.png"
@@ -27,7 +22,7 @@ const Card = styled.a`
   .imageContainer {
     ${tw`text-center rounded-full p-4 bg-gray-100`}
     img {
-      ${tw`w-24 h-24`}
+      ${tw`w-20 h-20`}
     }
   }
 
@@ -45,7 +40,7 @@ const Card = styled.a`
       ${tw`ml-2 w-4`}
     }
   }
-`
+`;
 
 export default ({
   heading = (
@@ -63,13 +58,13 @@ export default ({
     {
       imageSrc: whyusImg2,
       title: "Machine Learning",
-      description: "Greenergy is the newest application platform for calculating your carbon emissions based on the food you eat. We use machine learning to identify the foods you consume and determine the amount of carbon emitted. ",
+      description:
+        "Greenergy is the newest application platform for calculating your carbon emissions based on the food you eat. We use machine learning to identify the foods you consume and determine the amount of carbon emitted. ",
     },
     {
       imageSrc: whyusImg3,
       title: "Direct Comparison",
       description: "Lorem ipsum donor amet siti ceali placeholder text",
-      url: "https://google.com",
     },
   ],
   imageContainerCss = null,
@@ -83,25 +78,27 @@ export default ({
    *  4) url - the url that the card should goto on click
    */
   return (
-    <Container>
-      <HeadingInfoContainer>
-        <SectionHeading>{heading}</SectionHeading>
-      </HeadingInfoContainer>
-      <ContentWithPaddingLg>
-        <ThreeColumnContainer>
-          {cards.map((card, i) => (
-            <Column key={i}>
-              <Card href={card.url}>
-                <span className="imageContainer" css={imageContainerCss}>
-                  <img src={card.imageSrc} alt="" css={imageCss} />
-                </span>
-                <span className="title">{card.title}</span>
-                <p className="description">{card.description}</p>
-              </Card>
-            </Column>
-          ))}
-        </ThreeColumnContainer>
-      </ContentWithPaddingLg>
-    </Container>
+    <section id="whyus">
+      <Container>
+        <HeadingInfoContainer>
+          <SectionHeading>{heading}</SectionHeading>
+        </HeadingInfoContainer>
+        <ContentWithPaddingLg>
+          <ThreeColumnContainer>
+            {cards.map((card, i) => (
+              <Column key={i}>
+                <Card href={card.url}>
+                  <span className="imageContainer" css={imageContainerCss}>
+                    <img src={card.imageSrc} alt="" css={imageCss} />
+                  </span>
+                  <span className="title">{card.title}</span>
+                  <p className="description">{card.description}</p>
+                </Card>
+              </Column>
+            ))}
+          </ThreeColumnContainer>
+        </ContentWithPaddingLg>
+      </Container>
+    </section>
   )
 }

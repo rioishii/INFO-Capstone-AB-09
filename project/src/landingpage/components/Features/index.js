@@ -2,7 +2,7 @@ import React from "react"
 import tw from "twin.macro"
 import styled from "styled-components"
 import { css } from "styled-components/macro" //eslint-disable-line
-import { SectionHeading as HeadingTitle, Subheading } from "../Heading"
+import { SectionHeading as HeadingTitle } from "../Heading"
 import img1 from "../../../images/feature1.png"
 import img2 from "../../../images/feature2.png"
 import img3 from "../../../images/feature3.png"
@@ -33,64 +33,67 @@ export default ({
   ),
 }) => {
   return (
-    <Container>
-      <Content>
-        <HeadingInfoContainer>
-          <HeadingTitle>{heading}</HeadingTitle>
-        </HeadingInfoContainer>
-        <ThreeColumn>
-          <Column>
-            <Card>
-              <Image imageSrc={img1} />
-              <Details>
-                <Title>
-                  Calculate how much carbon is emitted from your food
-                </Title>
-                <Description>
-                  When you think about it, there are a ton of factors that
-                  contribute to the carboon footprint of this. This includes
-                  agriculture and transportation, where they both use
-                  non-renewable energy. By using our application, you can find
-                  out the specific resources used in your food and how much
-                  carbon is produced.
-                </Description>
-              </Details>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Image imageSrc={img2} />
-              <Details>
-                <Title>Compare your carbon footprint to other peers</Title>
-                <Description>
-                  After uploading an image, you can see your carbon emission
-                  score based on the food that you share with us. The higher the
-                  score you have, the more positive impact you are making. You
-                  can share the score with the world, your friends, and family,
-                  to show them that your diet is making a difference for the
-                  world.
-                </Description>
-              </Details>
-            </Card>
-          </Column>
-          <Column>
-            <Card>
-              <Image imageSrc={img3} />
-              <Details>
-                <Title>Provide solutions to the things you eat.</Title>
-                <Description>
-                  Are you concerned about the future of the world and want to
-                  make a difference? Your diet can be your first step to making
-                  a difference. If you want to lower your carbon footprint and
-                  you are unsure of what foods are carbon-friendly, we will
-                  provide you a solution. We will give you suggestions on what
-                  you can do to lower your carbon footprint.
-                </Description>
-              </Details>
-            </Card>
-          </Column>
-        </ThreeColumn>
-      </Content>
-    </Container>
+    <section id="features">
+      <Container>
+        <Content>
+          <HeadingInfoContainer>
+            <HeadingTitle>{heading}</HeadingTitle>
+          </HeadingInfoContainer>
+          <ThreeColumn>
+            <Column>
+              <Card>
+                <Image imageSrc={img1} />
+                <Details>
+                  <Title>
+                    Calculate how much carbon is emitted from your food
+                  </Title>
+                  <Description>
+                    When you think about it, there are a ton of factors that
+                    contribute to the carboon footprint of this. This includes
+                    agriculture and transportation, where they both use
+                    non-renewable energy. By using our application, you can find
+                    out the specific resources used in your food and how much
+                    carbon is produced.
+                  </Description>
+                </Details>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Image imageSrc={img2} />
+                <Details>
+                  <Title>Compare your carbon footprint to other peers</Title>
+                  <Description>
+                    After uploading an image, you can see your carbon emission
+                    score based on the food that you share with us. The higher
+                    the score you have, the more positive impact you are making.
+                    You can share the score with the world, your friends, and
+                    family, to show them that your diet is making a difference
+                    for the world.
+                  </Description>
+                </Details>
+              </Card>
+            </Column>
+            <Column>
+              <Card>
+                <Image imageSrc={img3} />
+                <Details>
+                  <Title>Provide solutions to the things you eat.</Title>
+                  <Description>
+                    Are you concerned about the future of the world and want to
+                    make a difference? Your diet can be your first step to
+                    making a difference. If you want to lower your carbon
+                    footprint and you are unsure of what foods are
+                    carbon-friendly, we will provide you a solution. We will
+                    give you suggestions on what you can do to lower your carbon
+                    footprint.
+                  </Description>
+                </Details>
+              </Card>
+            </Column>
+          </ThreeColumn>
+        </Content>
+      </Container>
+    </section>
   )
 }

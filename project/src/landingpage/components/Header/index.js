@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import tw from "twin.macro"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import { Link as SLink } from "react-scroll"
 import { css } from "styled-components/macro" //eslint-disable-line
 
 import useAnimatedNavToggler from "../../helper/useAnimatedNavToggler"
@@ -21,8 +22,15 @@ export const NavLinks = tw.div`inline-block`
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
+
+export const SmoothLink = tw(SLink)`
+  text-lg my-2 lg:mx-6 lg:my-0
+  font-semibold tracking-wide transition duration-300
+  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+`
+
 export const NavLink = tw.a`
-  text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
+  text-lg my-2 lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `
@@ -79,13 +87,23 @@ export default ({
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/#">Home</NavLink>
-      <NavLink href="/#">Features</NavLink>
-      <NavLink href="/#">Why Us?</NavLink>
-      <NavLink href="/#" tw="lg:ml-12!">
+      <SmoothLink to="features" spy={true} smooth={true} offset={100} duration={500}>
+        Features
+      </SmoothLink>
+      <SmoothLink to="steps" spy={true} smooth={true} offset={100} duration={500}>
+        How to
+      </SmoothLink>
+      <SmoothLink to="whyus" spy={true} smooth={true} offset={100} duration={500}>
+        Why us?
+      </SmoothLink>
+      <SmoothLink to="aboutus" spy={true} smooth={true} offset={100} duration={500}>
+        About us
+      </SmoothLink>
+
+      <NavLink tw="lg:ml-12!">
         <Link to="/app/login">Login</Link>
       </NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/#">
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}>
         <Link to="/app/signup">Sign up</Link>
       </PrimaryLink>
     </NavLinks>,

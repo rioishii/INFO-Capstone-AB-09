@@ -2,11 +2,8 @@ import React from "react"
 import tw from "twin.macro"
 import styled from "styled-components"
 import { css } from "styled-components/macro" //eslint-disable-line
-import {
-  SectionHeading,
-  Subheading as SubheadingBase,
-} from "../Heading"
-import TeamIllustrationSrc from "../../images/team-illustration-2.svg";
+import { SectionHeading } from "../Heading"
+import TeamIllustrationSrc from "../../images/team-illustration-2.svg"
 
 const Container = tw.div`relative`
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`
@@ -24,7 +21,6 @@ const Image = styled.img(props => [
   props.imageBorder && tw`border`,
   props.imageShadow && tw`shadow`,
 ])
-
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`
 
@@ -62,48 +58,48 @@ export default ({
     },
     {
       heading: "Upload",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     },
     {
       heading: "See results!",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     },
   ]
 
   if (!steps) steps = defaultSteps
 
   return (
-    <Container>
-      <TwoColumn>
-        <ImageColumn>
-          <Image
-            src={imageSrc}
-            imageBorder={imageBorder}
-            imageShadow={imageShadow}
-            imageRounded={imageRounded}
-          />
-        </ImageColumn>
-        <TextColumn textOnLeft={textOnLeft}>
-          <TextContent>
-            <Heading>{heading}</Heading>
-            <Steps>
-              {steps.map((step, index) => (
-                <Step key={index}>
-                  <StepNumber>
-                    {(index + 1).toString().padStart(2, "0")}
-                  </StepNumber>
-                  <StepText>
-                    <StepHeading>{step.heading}</StepHeading>
-                    <StepDescription>{step.description}</StepDescription>
-                  </StepText>
-                </Step>
-              ))}
-            </Steps>
-          </TextContent>
-        </TextColumn>
-      </TwoColumn>
-    </Container>
+    <section id="steps">
+      <Container>
+        <TwoColumn>
+          <ImageColumn>
+            <Image
+              src={imageSrc}
+              imageBorder={imageBorder}
+              imageShadow={imageShadow}
+              imageRounded={imageRounded}
+            />
+          </ImageColumn>
+          <TextColumn textOnLeft={textOnLeft}>
+            <TextContent>
+              <Heading>{heading}</Heading>
+              <Steps>
+                {steps.map((step, index) => (
+                  <Step key={index}>
+                    <StepNumber>
+                      {(index + 1).toString().padStart(2, "0")}
+                    </StepNumber>
+                    <StepText>
+                      <StepHeading>{step.heading}</StepHeading>
+                      <StepDescription>{step.description}</StepDescription>
+                    </StepText>
+                  </Step>
+                ))}
+              </Steps>
+            </TextContent>
+          </TextColumn>
+        </TwoColumn>
+      </Container>
+    </section>
   )
 }
