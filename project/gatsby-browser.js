@@ -11,6 +11,7 @@
 import Amplify, { Auth } from 'aws-amplify'
 import awsConfig from './src/aws-exports'
 import { setUser } from './src/utility/Auth'
+import "tailwindcss/dist/base.css";
 
 Amplify.configure(awsConfig)
 
