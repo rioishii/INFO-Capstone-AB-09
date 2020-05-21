@@ -87,13 +87,13 @@ export default ({
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <SmoothLink to="features" spy={true} smooth={true} offset={100} duration={500}>
+      <SmoothLink to="features" spy={true} smooth={true} offset={50} duration={500}>
         Features
       </SmoothLink>
-      <SmoothLink to="steps" spy={true} smooth={true} offset={100} duration={500}>
+      <SmoothLink to="steps" spy={true} smooth={true} offset={50} duration={500}>
         How to
       </SmoothLink>
-      <SmoothLink to="whyus" spy={true} smooth={true} offset={100} duration={500}>
+      <SmoothLink to="whyus" spy={true} smooth={true} offset={50} duration={500}>
         Why us?
       </SmoothLink>
 
