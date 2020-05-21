@@ -28,7 +28,6 @@ const Image = styled.img(props => [
 
 const TextContent = tw.div`lg:py-8 text-center md:text-left`
 
-const Subheading = tw(SubheadingBase)`text-center md:text-left`
 const Heading = tw(
   SectionHeading
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`
@@ -58,18 +57,18 @@ export default ({
 
   const defaultSteps = [
     {
-      heading: "Register",
-      description: "Create an account with us using Google or Facebook.",
+      heading: "Take a picture",
+      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     },
     {
-      heading: "Download",
+      heading: "Upload",
       description:
-        "Browse and Download the template that you like from the marketplace.",
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     },
     {
-      heading: "Run",
+      heading: "See results!",
       description:
-        "Follow the instructions to setup and customize the template to your needs.",
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
     },
   ]
 
@@ -88,7 +87,6 @@ export default ({
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Steps>
               {steps.map((step, index) => (

@@ -15,12 +15,12 @@ const LeftColumn = tw.div`relative lg:w-5/12 text-center max-w-lg mx-auto lg:max
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`
 
 const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`
-const Paragraph = tw.p`my-5 lg:my-8 text-base xl:text-lg`
+const Paragraph = tw.p`my-5 lg:my-8 text-xl xl:text-2xl`
 
 const IllustrationContainer = tw.div`flex justify-center lg:justify-end items-center`
 
 const PrimaryButton = styled(PrimaryButtonBase)(props => [
-  tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
+  tw`mt-4 md:mt-4 text-sm inline-block mx-auto md:mx-0`,
   props.buttonRounded && tw`rounded-full`,
 ])
 
@@ -31,12 +31,10 @@ export default ({ roundedHeaderButton }) => {
       <Container>
         <TwoColumn>
           <LeftColumn>
-            <Heading>
-              Beautiful React Templates for you.
-            </Heading>
+            <Heading>You emit what you eat.</Heading>
             <Paragraph>
-              Our templates are easy to setup, understand and customize. Fully
-              modular components with a variety of pages and components.
+              Food accounts for up to 30% of your carbon footprint. See how your
+              lunch scores on emissions.
             </Paragraph>
             <PrimaryButton buttonRounded={true} as="a" href="#">
               Learn More

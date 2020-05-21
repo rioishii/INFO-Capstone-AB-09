@@ -2,7 +2,7 @@ import React from "react"
 import tw from "twin.macro"
 import styled from "styled-components"
 import { Container as ContainerBase } from "../Layouts"
-import logo from "../../images/logo.svg"
+import logo from "../../../images/logo.png"
 
 const Container = tw(ContainerBase)`bg-gray-900 text-gray-100 -mx-8 -mb-8`
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`
@@ -24,7 +24,7 @@ export default () => {
         <Row>
           <LogoContainer>
             <LogoImg src={logo} />
-            <LogoText>Treact</LogoText>
+            <LogoText>Greenergy</LogoText>
           </LogoContainer>
           <LinksContainer>
             <Link href="#">Home</Link>

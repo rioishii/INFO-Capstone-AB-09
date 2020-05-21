@@ -6,6 +6,8 @@ import Hero from "../landingpage/components/Hero"
 import Features from "../landingpage/components/Features"
 import Steps from "../landingpage/components/Steps"
 import stepsImage from "../images/login.png"
+import WhyUs from "../landingpage/components/WhyUs"
+import AboutUs from "../landingpage/components/AboutUs"
 import Footer from "../landingpage/components/Footer"
 
 const LandingPage = () => {
@@ -26,6 +28,8 @@ const LandingPage = () => {
         textOnLeft={false}
         imageSrc={stepsImage}
       />
+      <WhyUs />
+      <AboutUs />
       <Footer />
     </AnimationRevealPage>
   )

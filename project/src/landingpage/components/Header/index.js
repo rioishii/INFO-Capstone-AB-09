@@ -2,13 +2,14 @@ import React from "react"
 import { motion } from "framer-motion"
 import tw from "twin.macro"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import { css } from "styled-components/macro" //eslint-disable-line
 
 import useAnimatedNavToggler from "../../helper/useAnimatedNavToggler"
 
-import logo from "../../images/logo.svg"
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import logo from "../../../images/logo.png"
+import MenuIcon from "@material-ui/icons/Menu"
+import CloseIcon from "@material-ui/icons/Close"
 
 const Header = tw.header`
   flex justify-between items-center
@@ -78,15 +79,14 @@ export default ({
    */
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/#">About</NavLink>
-      <NavLink href="/#">Blog</NavLink>
-      <NavLink href="/#">Pricing</NavLink>
-      <NavLink href="/#">Contact Us</NavLink>
+      <NavLink href="/#">Home</NavLink>
+      <NavLink href="/#">Features</NavLink>
+      <NavLink href="/#">Why Us?</NavLink>
       <NavLink href="/#" tw="lg:ml-12!">
-        Login
+        <Link to="/app/login">Login</Link>
       </NavLink>
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="/#">
-        Sign Up
+        <Link to="/app/signup">Sign up</Link>
       </PrimaryLink>
     </NavLinks>,
   ]
@@ -98,7 +98,7 @@ export default ({
   const defaultLogoLink = (
     <LogoLink href="/">
       <img src={logo} alt="logo" />
-      Treact
+      Greenergy
     </LogoLink>
   )
 
