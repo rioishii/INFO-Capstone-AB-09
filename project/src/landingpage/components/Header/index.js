@@ -96,9 +96,6 @@ export default ({
       <SmoothLink to="whyus" spy={true} smooth={true} offset={100} duration={500}>
         Why us?
       </SmoothLink>
-      <SmoothLink to="aboutus" spy={true} smooth={true} offset={100} duration={500}>
-        About us
-      </SmoothLink>
 
       <NavLink tw="lg:ml-12!">
         <Link to="/app/login">Login</Link>
