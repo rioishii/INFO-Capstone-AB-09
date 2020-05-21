@@ -27,11 +27,11 @@ const Card = styled.a`
   }
 
   .title {
-    ${tw`mt-4 font-bold text-xl leading-none`}
+    ${tw`mt-4 font-bold text-xl leading-none text-gray-700`}
   }
 
   .description {
-    ${tw`mt-4 text-sm font-medium text-secondary-300`}
+    ${tw`mt-4 text-sm font-medium text-secondary-500`}
   }
 
   .link {

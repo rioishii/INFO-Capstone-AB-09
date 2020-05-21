@@ -3,7 +3,7 @@ import tw from "twin.macro"
 import styled from "styled-components"
 import { css } from "styled-components/macro" //eslint-disable-line
 import { SectionHeading } from "../Heading"
-import TeamIllustrationSrc from "../../images/team-illustration-2.svg"
+import stepsImage from "../../../images/login.png"
 
 const Container = tw.div`relative`
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`
@@ -26,7 +26,7 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`
 
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`
+)`mt-4 font-black text-gray-700 text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`
 
 const Steps = tw.ul`mt-12`
 const Step = tw.li`mt-8 flex flex-col md:flex-row items-center md:items-start`
@@ -36,17 +36,16 @@ const StepHeading = tw.h6`leading-none text-xl font-semibold`
 const StepDescription = tw.p`mt-3 max-w-xs leading-loose text-sm text-gray-600 font-medium`
 
 export default ({
-  subheading = "Our Expertise",
   heading = (
     <>
-      Designed & Developed by <span tw="text-primary-500">Professionals.</span>
+      Easy to  <span tw="text-primary-500">Get Started.</span>
     </>
   ),
-  imageSrc = TeamIllustrationSrc,
+  imageSrc = stepsImage,
   imageRounded = true,
   imageBorder = false,
   imageShadow = false,
-  textOnLeft = true,
+  textOnLeft = false,
   steps = null,
 }) => {
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.

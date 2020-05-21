@@ -23,7 +23,7 @@ const Image = styled.div(props => [
 const Details = tw.div`p-6 rounded border-2 border-t-0 rounded-t-none border-dashed border-primary-100 flex-1 flex flex-col items-center text-center lg:block lg:text-left`
 
 const Title = tw.h5`mt-2 leading-snug font-bold text-lg text-primary-500`
-const Description = tw.p`mt-2 mb-2`
+const Description = tw.p`mt-2 mb-2 text-gray-700`
 
 export default ({
   heading = (
