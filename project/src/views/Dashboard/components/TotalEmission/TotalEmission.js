@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
-import PublicIcon from '@material-ui/icons/Public';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,18 +51,18 @@ const TotalEmission = props => {
               gutterBottom
               variant="body1"
             >
-              Total Carbon Emitted
+              Total Miles Driven
             </Typography>
             <Typography
               color="inherit"
               variant="h3"
             >
-              42069 lbs
+              142.47 Miles
             </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <PublicIcon className={classes.icon} />
+              <DirectionsCarIcon className={classes.icon} />
             </Avatar>
           </Grid>
         </Grid>

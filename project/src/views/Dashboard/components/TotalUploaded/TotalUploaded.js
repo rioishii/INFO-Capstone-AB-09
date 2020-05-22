@@ -50,7 +50,7 @@ const TotalUploaded = props => {
             >
               Pictures Uploaded
             </Typography>
-            <Typography variant="h3">5</Typography>
+            <Typography variant="h3">7</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>

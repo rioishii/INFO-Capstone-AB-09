@@ -55,9 +55,9 @@ const AverageEmission = props => {
               gutterBottom
               variant="body1"
             >
-              Average Emission per Meal
+              Average Score per Meal
             </Typography>
-            <Typography variant="h3">69 lbs</Typography>
+            <Typography variant="h3">8.773</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
