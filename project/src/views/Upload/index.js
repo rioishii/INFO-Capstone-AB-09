@@ -1,5 +1,5 @@
 import React from "react"
-import Dropzone from "../../components/Dropzone"
+import Dropzone from "../../components/dropzone"
 import UserForm from "./components/UserForm"
 import { makeStyles } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"

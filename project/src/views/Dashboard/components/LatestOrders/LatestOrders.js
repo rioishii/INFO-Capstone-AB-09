@@ -21,9 +21,6 @@ import {
 } from "@material-ui/core"
 import ArrowRightIcon from "@material-ui/icons/ArrowRight"
 
-import mockData from "./mockdata"
-// import { StatusBullet } from 'components';
-
 const useStyles = makeStyles(theme => ({
   root: {},
   content: {
@@ -45,13 +42,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const LatestOrders = props => {
-  const { className, ...rest } = props
+  const { className, foodScores, ...rest } = props
 
   const classes = useStyles()
-
-  const [orders] = useState(mockData)
-
-  console.log(orders)
 
   return (
     <Card {...rest} className={clsx(classes.root, className)}>
@@ -83,7 +76,7 @@ const LatestOrders = props => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {orders.map(order => (
+                {foodScores.map(order => (
                   <TableRow hover key={order.id}>
                     <TableCell>{order.createdAt}</TableCell>
                     <TableCell>{order.foodName}</TableCell>

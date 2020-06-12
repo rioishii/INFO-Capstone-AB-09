@@ -1,38 +1,5 @@
 import palette from "../../../../themes/palette"
 
-export const data = {
-  labels: [
-    "16 May",
-    "17 May",
-    "18 May",
-    "19 May",
-    "20 May",
-    "21 May",
-    "22 May",
-  ],
-  datasets: [
-    {
-      label: "Score",
-      backgroundColor: palette.primary.main,
-      data: [15.55, 9.27, 13.73, 2, 13.68, 6.45, 0.73],
-      data1: [
-        "Peking Duck",
-        "Pizza",
-        "Hamburger",
-        "Frozen Yogurt",
-        "Prime Rib",
-        "Pho",
-        "Greek Salad",
-      ],
-    },
-    {
-      label: "Car Miles",
-      backgroundColor: palette.secondary.main,
-      data: [36.08, 21.51, 31.85, 4.64, 31.74, 14.96, 1.69],
-    },
-  ],
-}
-
 export const options = {
   responsive: true,
   maintainAspectRatio: false,

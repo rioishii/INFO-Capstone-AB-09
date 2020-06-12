@@ -8,6 +8,8 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
+import { DataStore, Predicates } from "@aws-amplify/datastore"
+import { FoodScore } from "../../models"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -121,30 +123,71 @@ const Dropzone = () => {
     setProbability("")
   }
 
+  useEffect(() => {
+    async function CreateFoodScore() {
+      if (score && prediction && carMiles) {
+        let today = getDate()
+        await DataStore.save(
+          new FoodScore({
+            foodName: prediction,
+            score: score,
+            miles: carMiles,
+            createdAt: today,
+          })
+        )
+      }
+    }
+
+    CreateFoodScore()
+  }, [prediction, score, carMiles])
+
   function round(value, decimals) {
     return Number(Math.round(value + "e" + decimals) + "e-" + decimals)
   }
 
-  const onImageSubmit = () => {
+  async function onImageSubmit() {
     const formData = new FormData()
     formData.append("image", files[0])
 
-    axios
-      .post("http://3.17.14.113:5000/predict", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then(res => {
-        console.log(res.data)
-        if (res.data.success === true) {
-          console.log(res.data.prediction)
-          setScore(res.data.emissions)
-          setCarMiles(round(res.data.emissions * 2.32, 2))
-          setPrediction(res.data.prediction)
-          setProbability(res.data.probability)
+    try {
+      const res = await axios.post(
+        "http://3.17.14.113:5000/predict",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      })
+      )
+      console.log(res.data)
+      if (res.data.success === true) {
+        setScore(res.data.emissions)
+        setCarMiles(round(res.data.emissions * 2.32, 2))
+        setPrediction(res.data.prediction)
+        setProbability(res.data.probability)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  function getDate() {
+    let today = new Date()
+    let dd = today.getDate()
+
+    let mm = today.getMonth() + 1
+    var yyyy = today.getFullYear()
+    if (dd < 10) {
+      dd = "0" + dd
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm
+    }
+
+    today = mm + "/" + dd + "/" + yyyy
+
+    return today
   }
 
   const style = useMemo(

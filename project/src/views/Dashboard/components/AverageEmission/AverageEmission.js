@@ -1,53 +1,52 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/styles';
-import {
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-  Avatar,
-} from '@material-ui/core';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
+import React from "react"
+import clsx from "clsx"
+import { makeStyles } from "@material-ui/styles"
+import { Card, CardContent, Grid, Typography, Avatar } from "@material-ui/core"
+import FastfoodIcon from "@material-ui/icons/Fastfood"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%'
+    height: "100%",
   },
   content: {
-    alignItems: 'center',
-    display: 'flex'
+    alignItems: "center",
+    display: "flex",
   },
   title: {
-    fontWeight: 700
+    fontWeight: 700,
   },
   avatar: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.primary.contrastText,
     height: 56,
-    width: 56
+    width: 56,
   },
   icon: {
     height: 32,
-    width: 32
+    width: 32,
   },
-}));
+}))
 
 const AverageEmission = props => {
-  const { className, ...rest } = props;
+  const { className, foodScores, ...rest } = props
 
-  const classes = useStyles();
+  const classes = useStyles()
+
+  let average = calcAverage()
+
+  function calcAverage() {
+    let sum = foodScores.reduce(function(s, a) {
+      return s + a.score
+    }, 0)
+
+    let average =  sum / foodScores.length
+    return average.toFixed(3)
+  }
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent>
-        <Grid
-          container
-          justify="space-between"
-        >
+        <Grid container justify="space-between">
           <Grid item>
             <Typography
               className={classes.title}
@@ -57,7 +56,8 @@ const AverageEmission = props => {
             >
               Average Score per Meal
             </Typography>
-            <Typography variant="h3">8.773</Typography>
+            <Typography variant="h3" display="inline">{average} </Typography>
+            <Typography variant="body1" display="inline">Co2 kg per ~1lb</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
@@ -67,8 +67,7 @@ const AverageEmission = props => {
         </Grid>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-
-export default AverageEmission;
+export default AverageEmission

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TotalUploaded = props => {
-  const { className, ...rest } = props;
+  const { className, foodScores, ...rest } = props;
 
   const classes = useStyles();
 
@@ -50,7 +50,7 @@ const TotalUploaded = props => {
             >
               Pictures Uploaded
             </Typography>
-            <Typography variant="h3">7</Typography>
+            <Typography variant="h3">{foodScores.length}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
