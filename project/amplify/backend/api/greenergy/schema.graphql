@@ -1,0 +1,7 @@
+type foodScore @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  foodName: String
+  score: Float
+  miles: Float
+  created: String
+}

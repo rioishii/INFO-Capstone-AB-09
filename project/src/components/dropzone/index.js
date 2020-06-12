@@ -11,8 +11,8 @@ import Paper from "@material-ui/core/Paper"
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     textAlign: "center",
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),
@@ -120,9 +120,9 @@ const Dropzone = () => {
     setPrediction("")
     setProbability("")
   }
-  
+
   function round(value, decimals) {
-    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    return Number(Math.round(value + "e" + decimals) + "e-" + decimals)
   }
 
   const onImageSubmit = () => {
@@ -130,7 +130,7 @@ const Dropzone = () => {
     formData.append("image", files[0])
 
     axios
-      .post("http://127.0.0.1:5000/predict", formData, {
+      .post("http://3.17.14.113:5000/predict", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -214,13 +214,17 @@ const Dropzone = () => {
             <strong>Score: {score}</strong>
           </Typography>
           <Typography variant="h5" color="primary" align="center" gutterBottom>
-            <strong>About the same as driving {carMiles} miles in your car</strong>
+            <strong>
+              About the same as driving {carMiles} miles in your car
+            </strong>
           </Typography>
           <Typography variant="body1" color="primary">
             {probability} this is {prediction}
           </Typography>
           {renderImage()}
-          <small> This score is based on C02 Kilos per ~1 pound serving of food </small>
+          <Typography variant="body1" align="center" gutterBottom>
+            This score is based on C02 Kilos per ~1 pound serving of food
+          </Typography>
           <Button
             variant="contained"
             color="primary"
