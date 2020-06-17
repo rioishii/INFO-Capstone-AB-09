@@ -35,7 +35,7 @@ const LatestSales = props => {
   let foodLabels = foodScores.map(item => item.createdAt)
   let scores = foodScores.map(item => item.score)
   let foodNames = foodScores.map(item => item.foodName)
-  let miles = foodScores.map(item => item.miles)
+  let miles = foodScores.map(item => item.carMiles)
   
   const data = {
     labels: foodLabels,

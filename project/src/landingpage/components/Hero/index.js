@@ -6,7 +6,7 @@ import { css } from "styled-components/macro"
 
 import Header from "../Header"
 import { PrimaryButton as PrimaryButtonBase } from "../Button"
-import Dropzone from "../../../components/dropzone"
+import Dropzone from "../../../components/dropzoneDemo"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import factsIcon from "../../../images/factsicon.png"
@@ -16,8 +16,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "gatsby"
 
 const Container = tw.div`relative`
-const TwoColumn = tw.div`flex flex-col lg:flex-row max-w-screen-xl mx-auto py-20 md:py-24`
-const LeftColumn = tw.div`relative lg:w-5/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`
+const TwoColumn = tw.div`flex flex-col lg:flex-row max-w-screen-xl mx-auto py-8 md:py-8`
+const LeftColumn = tw.div`relative lg:w-6/12 text-center max-w-lg mx-auto lg:max-w-none lg:text-left`
 const RightColumn = tw.div`relative mt-12 lg:mt-0 flex-1 flex flex-col justify-center lg:self-end`
 
 const Heading = tw.h1`font-bold text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-900 leading-tight`
@@ -59,7 +59,7 @@ export default ({ roundedHeaderButton }) => {
           <LeftColumn>
             <Heading>You emit what you eat.</Heading>
             <Paragraph>
-              Food accounts for up to 30% of your carbon footprint. See how your
+              Food accounts for up to 30% of your carbon footprint. <br></br>See how your
               lunch scores on emissions.
             </Paragraph>
             <PrimaryButton buttonRounded={true} as="a">

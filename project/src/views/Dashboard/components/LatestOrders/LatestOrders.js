@@ -81,7 +81,7 @@ const LatestOrders = props => {
                     <TableCell>{order.createdAt}</TableCell>
                     <TableCell>{order.foodName}</TableCell>
                     <TableCell>{order.score}</TableCell>
-                    <TableCell>{order.miles}</TableCell>
+                    <TableCell>{order.carMiles}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

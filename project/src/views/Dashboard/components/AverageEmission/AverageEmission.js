@@ -35,11 +35,14 @@ const AverageEmission = props => {
   let average = calcAverage()
 
   function calcAverage() {
+    if (foodScores.length === 0) {
+      return 0
+    }
     let sum = foodScores.reduce(function(s, a) {
       return s + a.score
     }, 0)
 
-    let average =  sum / foodScores.length
+    let average = sum / foodScores.length
     return average.toFixed(3)
   }
 
@@ -56,8 +59,16 @@ const AverageEmission = props => {
             >
               Average Score per Meal
             </Typography>
-            <Typography variant="h3" display="inline">{average} </Typography>
-            <Typography variant="body1" display="inline">Co2 kg per ~1lb</Typography>
+            <Typography variant="h3" display="inline">
+              {average}{" "}
+            </Typography>
+            <Typography
+              variant="body2"
+              display="inline"
+              style={{ color: "#424242" }}
+            >
+              Co2 kg per ~1lb of serving
+            </Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>

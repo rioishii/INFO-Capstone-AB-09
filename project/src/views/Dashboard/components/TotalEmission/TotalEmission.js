@@ -37,11 +37,14 @@ const TotalEmission = props => {
   let total = calcTotal()
 
   function calcTotal() {
+    if (foodScores.length === 0) {
+      return 0
+    }
     let sum = foodScores.reduce(function(s, a) {
-      return s + a.miles
+      return s + a.carMiles
     }, 0)
 
-    return sum
+    return sum.toFixed(3)
   }
 
   return (

@@ -8,8 +8,6 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
-import { DataStore, Predicates } from "@aws-amplify/datastore"
-import { FoodScore } from "../../models"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -122,29 +120,6 @@ const Dropzone = () => {
     setPrediction("")
     setProbability("")
   }
-
-  useEffect(() => {
-    async function CreateFoodScore() {
-      if (score && prediction && carMiles) {
-        let today = getDate()
-        await DataStore.save(
-          new FoodScore({
-            foodName: prediction,
-            score: score,
-            carMiles: carMiles,
-            createdAt: today,
-          })
-        )
-      }
-    }
-
-    async function deleteScores() {
-      await DataStore.delete(FoodScore, Predicates.ALL)
-    }
-
-    CreateFoodScore()
-    // deleteScores()
-  }, [prediction, score, carMiles])
 
   function round(value, decimals) {
     return Number(Math.round(value + "e" + decimals) + "e-" + decimals)
