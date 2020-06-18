@@ -6,7 +6,8 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 export declare class FoodScore {
   readonly id: string;
-  readonly foodName: string;
+  readonly userID: string;
+  readonly name: string;
   readonly score: number;
   readonly carMiles: number;
   readonly createdAt: string;

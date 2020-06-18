@@ -5,11 +5,11 @@ export const getFoodScore = /* GraphQL */ `
   query GetFoodScore($id: ID!) {
     getFoodScore(id: $id) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }
@@ -23,11 +23,11 @@ export const listFoodScores = /* GraphQL */ `
     listFoodScores(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        foodName
+        userID
+        name
         score
         carMiles
         createdAt
-        updatedAt
         owner
       }
       nextToken

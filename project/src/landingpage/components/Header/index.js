@@ -29,7 +29,7 @@ export const SmoothLink = tw(SLink)`
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `
 
-export const NavLink = tw.a`
+export const NavLink = tw(Link)`
   text-lg my-2 lg:mx-6 lg:my-0 text-gray-700
   font-semibold tracking-wide transition duration-300
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
@@ -72,36 +72,44 @@ export default ({
   className,
   collapseBreakpointClass = "lg",
 }) => {
-  /*
-   * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
-   * This links props should be an array of "NavLinks" components which is exported from this file.
-   * Each "NavLinks" component can contain any amount of "NavLink" component, also exported from this file.
-   * This allows this Header to be multi column.
-   * So If you pass only a single item in the array with only one NavLinks component as root, you will get 2 column header.
-   * Left part will be LogoLink, and the right part will be the the NavLinks component you
-   * supplied.
-   * Similarly if you pass 2 items in the links array, then you will get 3 columns, the left will be "LogoLink", the center will be the first "NavLinks" component in the array and the right will be the second "NavLinks" component in the links array.
-   * You can also choose to directly modify the links here by not passing any links from the parent component and
-   * changing the defaultLinks variable below below.
-   * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
-   */
   const defaultLinks = [
     <NavLinks key={1}>
-      <SmoothLink to="features" spy={true} smooth={true} offset={50} duration={500}>
+      <SmoothLink
+        to="features"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
         Features
       </SmoothLink>
-      <SmoothLink to="steps" spy={true} smooth={true} offset={50} duration={500}>
+      <SmoothLink
+        to="steps"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
         How to
       </SmoothLink>
-      <SmoothLink to="whyus" spy={true} smooth={true} offset={50} duration={500}>
+      <SmoothLink
+        to="whyus"
+        spy={true}
+        smooth={true}
+        offset={50}
+        duration={500}
+      >
         Why us?
       </SmoothLink>
 
-      <NavLink tw="lg:ml-12!">
-        <Link to="/app/login">Login</Link>
+      <NavLink tw="lg:ml-12!" to="/app/login">
+        Login
       </NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}>
-        <Link to="/app/signup">Sign up</Link>
+      <PrimaryLink
+        css={roundedHeaderButton && tw`rounded-full`}
+        to="/app/signup"
+      >
+        Sign up
       </PrimaryLink>
     </NavLinks>,
   ]

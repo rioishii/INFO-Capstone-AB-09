@@ -5,11 +5,11 @@ export const onCreateFoodScore = /* GraphQL */ `
   subscription OnCreateFoodScore($owner: String!) {
     onCreateFoodScore(owner: $owner) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }
@@ -18,11 +18,11 @@ export const onUpdateFoodScore = /* GraphQL */ `
   subscription OnUpdateFoodScore($owner: String!) {
     onUpdateFoodScore(owner: $owner) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }
@@ -31,11 +31,11 @@ export const onDeleteFoodScore = /* GraphQL */ `
   subscription OnDeleteFoodScore($owner: String!) {
     onDeleteFoodScore(owner: $owner) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }

@@ -10,8 +10,15 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "foodName": {
-                    "name": "foodName",
+                "userID": {
+                    "name": "userID",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
@@ -34,7 +41,7 @@ export const schema = {
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSDate",
                     "isRequired": true,
                     "attributes": []
                 }
@@ -58,8 +65,7 @@ export const schema = {
                                 "operations": [
                                     "create",
                                     "update",
-                                    "delete",
-                                    "read"
+                                    "delete"
                                 ]
                             }
                         ]
@@ -70,5 +76,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "6ad393e2f3c0b07bfbb742019a591669"
+    "version": "6e06bc1ffa768137b28e5f6bc0c05d5a"
 };

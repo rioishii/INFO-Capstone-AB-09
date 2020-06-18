@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import clsx from "clsx"
 import { Link } from "gatsby"
 import PerfectScrollbar from "react-perfect-scrollbar"
-import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/styles"
 import {
   Card,
@@ -41,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const LatestOrders = props => {
+const UploadTable = props => {
   const { className, foodScores, ...rest } = props
 
   const classes = useStyles()
@@ -99,8 +98,4 @@ const LatestOrders = props => {
   )
 }
 
-LatestOrders.propTypes = {
-  className: PropTypes.string,
-}
-
-export default LatestOrders
+export default UploadTable

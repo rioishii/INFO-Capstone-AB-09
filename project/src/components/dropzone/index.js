@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import { DataStore, Predicates } from "@aws-amplify/datastore"
 import { FoodScore } from "../../models"
+import { getUser } from "../../utility/Auth"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -27,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(4),
   },
   uploadIcon: {
-    width: "65px",
+    minWidth: "65px",
+    minHeight: "65px"
   },
   button: {
     color: "#fff",
@@ -64,8 +66,7 @@ const rejectStyle = {
 
 const thumbsContainer = {
   height: "300px",
-  marginTop: theme.spacing(4),
-  marginBottom: theme.spacing(4),
+  marginTop: theme.spacing(2),
 }
 
 const thumb = {
@@ -126,10 +127,12 @@ const Dropzone = () => {
   useEffect(() => {
     async function CreateFoodScore() {
       if (score && prediction && carMiles) {
-        let today = getDate()
+        const today = getDate()
+        const user = getUser();
         await DataStore.save(
           new FoodScore({
             foodName: prediction,
+            userId: user.email,
             score: score,
             carMiles: carMiles,
             createdAt: today,
@@ -190,7 +193,7 @@ const Dropzone = () => {
       mm = "0" + mm
     }
 
-    today = mm + "/" + dd + "/" + yyyy
+    today = yyyy + "-" + mm + "-" + dd
 
     return today
   }

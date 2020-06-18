@@ -8,11 +8,11 @@ export const createFoodScore = /* GraphQL */ `
   ) {
     createFoodScore(input: $input, condition: $condition) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }
@@ -24,11 +24,11 @@ export const updateFoodScore = /* GraphQL */ `
   ) {
     updateFoodScore(input: $input, condition: $condition) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }
@@ -40,11 +40,11 @@ export const deleteFoodScore = /* GraphQL */ `
   ) {
     deleteFoodScore(input: $input, condition: $condition) {
       id
-      foodName
+      userID
+      name
       score
       carMiles
       createdAt
-      updatedAt
       owner
     }
   }

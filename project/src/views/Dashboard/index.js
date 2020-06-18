@@ -8,7 +8,7 @@ import {
   TotalUploaded,
   TotalEmission,
   AverageEmission,
-  LatestOrders,
+  UploadTable,
 } from "./components"
 
 const useStyles = makeStyles(theme => ({
@@ -48,7 +48,7 @@ const Dashboard = () => {
           <TotalEmission foodScores={foodScores} />
         </Grid>
         <Grid item xs={12}>
-          <LatestOrders foodScores={foodScores} />
+          <UploadTable foodScores={foodScores} />
         </Grid>
       </Grid>
     </div>

@@ -146,7 +146,6 @@ const Login = () => {
         [event.target.name]: true,
       },
     }))
-    console.log(formState)
   }
 
   const handleBack = () => {

@@ -62,7 +62,7 @@ export default ({ roundedHeaderButton }) => {
               Food accounts for up to 30% of your carbon footprint. <br></br>See how your
               lunch scores on emissions.
             </Paragraph>
-            <PrimaryButton buttonRounded={true} as="a">
+            <PrimaryButton buttonRounded={true}>
               <Link to="/app/signup">See Your Score Now</Link>
             </PrimaryButton>
             <HeroCardContainer>

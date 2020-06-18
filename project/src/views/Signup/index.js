@@ -97,11 +97,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     display: "flex",
     alignItems: "center",
-    paddingLeft: theme.spacing(10),
-    [theme.breakpoints.down("md")]: {
-      justifyContent: "center",
-      paddingLeft: 0,
-    },
+    justifyContent: "center",
+    paddingLeft: 0,
   },
   form: {
     paddingLeft: 100,
@@ -381,7 +378,8 @@ const Signup = () => {
               </Typography>
               <Typography color="textPrimary" variant="body1" gutterBottom>
                 Thank you for registering! We have sent you an email with a link
-                to verify your account. Please click the link in that email and sign in to continue.
+                to verify your account. Please click the link in that email and
+                sign in to continue.
               </Typography>
 
               <Button
@@ -411,7 +409,7 @@ const Signup = () => {
                   Discover how your food contributes to your carbon footprint.
                 </Typography>
               </div>
-              <div style={{ textAlign: "right" }}>
+              <div className={classes.imgText}>
                 <img src={signupImg} alt="icon" />
               </div>
             </div>

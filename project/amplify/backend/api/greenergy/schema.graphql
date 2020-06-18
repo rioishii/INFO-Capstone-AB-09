@@ -1,7 +1,8 @@
 type FoodScore @model @auth(rules: [{ allow: owner }]) {
   id: ID!
-  foodName: String!
+  userID: String!
+  name: String!
   score: Float!
   carMiles: Float!
-  createdAt: String!
+  createdAt: AWSDate!
 }
