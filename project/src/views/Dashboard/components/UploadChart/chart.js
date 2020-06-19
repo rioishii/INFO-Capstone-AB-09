@@ -2,7 +2,7 @@ import palette from "../../../../themes/palette"
 
 export const options = {
   responsive: true,
-  maintainAspectRatio: false,
+  maintainAspectRatio: true,
   animation: false,
   legend: { display: true },
   cornerRadius: 20,
@@ -16,11 +16,6 @@ export const options = {
     mode: "label",
     intersect: false,
     borderWidth: 1,
-    borderColor: palette.divider,
-    backgroundColor: palette.white,
-    titleFontColor: palette.text.primary,
-    bodyFontColor: palette.text.secondary,
-    footerFontColor: palette.text.secondary,
   },
   layout: { padding: 0 },
   scales: {

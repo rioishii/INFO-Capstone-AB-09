@@ -141,12 +141,7 @@ const Dropzone = () => {
       }
     }
 
-    async function deleteScores() {
-      await DataStore.delete(FoodScore, Predicates.ALL)
-    }
-
     CreateFoodScore()
-    // deleteScores()
   }, [prediction, score, carMiles])
 
   function round(value, decimals) {
