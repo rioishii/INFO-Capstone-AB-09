@@ -139,7 +139,6 @@ const Dropzone = () => {
           },
         }
       )
-      console.log(res.data)
       if (res.data.success === true) {
         setScore(res.data.emissions)
         setCarMiles(round(res.data.emissions * 2.32, 2))
@@ -149,25 +148,6 @@ const Dropzone = () => {
     } catch (error) {
       console.log(error)
     }
-  }
-
-  function getDate() {
-    let today = new Date()
-    let dd = today.getDate()
-
-    let mm = today.getMonth() + 1
-    var yyyy = today.getFullYear()
-    if (dd < 10) {
-      dd = "0" + dd
-    }
-
-    if (mm < 10) {
-      mm = "0" + mm
-    }
-
-    today = mm + "/" + dd + "/" + yyyy
-
-    return today
   }
 
   const style = useMemo(

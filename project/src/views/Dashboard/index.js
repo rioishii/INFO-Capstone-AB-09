@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"
 import { DataStore } from "@aws-amplify/datastore"
 import { FoodScore } from "../../models"
+import { getUser } from "../../utility/Auth"
 
 import {
   TotalUploaded,
@@ -28,10 +29,11 @@ const Dashboard = () => {
       fetchData()
     )
     return () => subscription.unsubscribe
-  }, [])
+  })
 
   async function fetchData() {
-    const foodScores = await DataStore.query(FoodScore)
+    const user = getUser()
+    const foodScores = await DataStore.query(FoodScore, c => c.userID("eq", user.email))
     updateFoodScores(foodScores)
   }
 

@@ -131,8 +131,8 @@ const Dropzone = () => {
         const user = getUser();
         await DataStore.save(
           new FoodScore({
-            foodName: prediction,
-            userId: user.email,
+            userID: user.email,
+            name: prediction,
             score: score,
             carMiles: carMiles,
             createdAt: today,
@@ -167,7 +167,6 @@ const Dropzone = () => {
           },
         }
       )
-      console.log(res.data)
       if (res.data.success === true) {
         setScore(res.data.emissions)
         setCarMiles(round(res.data.emissions * 2.32, 2))

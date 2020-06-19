@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/styles"
 import { Grid } from "@material-ui/core"
 import { DataStore } from "@aws-amplify/datastore"
 import { FoodScore } from "../../models"
-import { LatestSales } from "../Dashboard/components"
+import { UploadChart } from "../Dashboard/components"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +33,7 @@ export default function History() {
     <div className={classes.root}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <LatestSales foodScores={foodScores} />
+          <UploadChart foodScores={foodScores} />
         </Grid>
       </Grid>
     </div>
