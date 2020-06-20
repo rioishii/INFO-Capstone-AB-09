@@ -74,6 +74,9 @@ Parameters:
   userpoolClientSetAttributes:
     Type: String
             
+  sharedId:
+    Type: String
+              
   resourceName:
     Type: String
               
@@ -112,7 +115,7 @@ Resources:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'greened7d97130_sns-role', !Join ['',[ 'sns', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'greene127f452a_sns-role', !Join ['',[ 'sns', '127f452a', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument: 
         Version: "2012-10-17"
         Statement: 
@@ -124,10 +127,10 @@ Resources:
               - "sts:AssumeRole"
             Condition: 
               StringEquals:
-                sts:ExternalId: greened7d97130_role_external_id
+                sts:ExternalId: greene127f452a_role_external_id
       Policies: 
         - 
-          PolicyName: greened7d97130-sns-policy
+          PolicyName: greene127f452a-sns-policy
           PolicyDocument: 
             Version: "2012-10-17"
             Statement: 
@@ -185,7 +188,7 @@ Resources:
       SmsVerificationMessage: !Ref smsVerificationMessage
       SmsConfiguration: 
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: greened7d97130_role_external_id
+        ExternalId: greene127f452a_role_external_id
     
   
     
@@ -205,7 +208,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: greened7d97130_app_clientWeb
+      ClientName: greene127f452a_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -215,7 +218,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: greened7d97130_app_client
+      ClientName: greene127f452a_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -226,7 +229,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '127f452a', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -280,7 +283,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: greened7d97130_userpoolclient_lambda_iam_policy
+      PolicyName: greene127f452a_userpoolclient_lambda_iam_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -297,7 +300,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: greened7d97130_userpoolclient_lambda_log_policy
+      PolicyName: greene127f452a_userpoolclient_lambda_log_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -337,7 +340,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'greenergyd7d97130_identitypool_d7d97130', !Join ['',['greenergyd7d97130_identitypool_d7d97130', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'greenergy127f452a_identitypool_127f452a', !Join ['',['greenergy127f452a_identitypool_127f452a', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

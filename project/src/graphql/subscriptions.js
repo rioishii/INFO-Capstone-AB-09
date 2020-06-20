@@ -10,6 +10,7 @@ export const onCreateFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }
@@ -23,6 +24,7 @@ export const onUpdateFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }
@@ -36,6 +38,7 @@ export const onDeleteFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }

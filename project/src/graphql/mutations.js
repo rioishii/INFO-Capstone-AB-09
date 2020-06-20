@@ -13,6 +13,7 @@ export const createFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }
@@ -29,6 +30,7 @@ export const updateFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }
@@ -45,6 +47,7 @@ export const deleteFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }

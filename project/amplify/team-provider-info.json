@@ -1,19 +1,19 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-greenergy-dev-161848-authRole",
-            "UnauthRoleArn": "arn:aws:iam::395241561214:role/amplify-greenergy-dev-161848-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::395241561214:role/amplify-greenergy-dev-161848-authRole",
+            "AuthRoleName": "amplify-greenergy-dev-185955-authRole",
+            "UnauthRoleArn": "arn:aws:iam::395241561214:role/amplify-greenergy-dev-185955-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::395241561214:role/amplify-greenergy-dev-185955-authRole",
             "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-greenergy-dev-161848-deployment",
-            "UnauthRoleName": "amplify-greenergy-dev-161848-unauthRole",
-            "StackName": "amplify-greenergy-dev-161848",
-            "StackId": "arn:aws:cloudformation:us-east-2:395241561214:stack/amplify-greenergy-dev-161848/e7ee1180-b0f0-11ea-babd-02d970724e3a",
-            "AmplifyAppId": "d131s87ms3u6d9"
+            "DeploymentBucketName": "amplify-greenergy-dev-185955-deployment",
+            "UnauthRoleName": "amplify-greenergy-dev-185955-unauthRole",
+            "StackName": "amplify-greenergy-dev-185955",
+            "StackId": "arn:aws:cloudformation:us-east-2:395241561214:stack/amplify-greenergy-dev-185955/c98071c0-b299-11ea-96e1-022fd555c652",
+            "AmplifyAppId": "dn72k1pegc4xa"
         },
         "categories": {
             "auth": {
-                "greenergyd7d97130": {}
+                "greenergy127f452a": {}
             }
         }
     }

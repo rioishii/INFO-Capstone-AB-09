@@ -10,6 +10,7 @@ export const getFoodScore = /* GraphQL */ `
       score
       carMiles
       createdAt
+      updatedAt
       owner
     }
   }
@@ -28,6 +29,7 @@ export const listFoodScores = /* GraphQL */ `
         score
         carMiles
         createdAt
+        updatedAt
         owner
       }
       nextToken
